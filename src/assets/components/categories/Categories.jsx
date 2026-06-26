@@ -1,11 +1,11 @@
 import { CircularProgress, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import useCategories from '../hoks/useCategories';
+import UseCategories from '../hoks/UseCategories';
 
 export default function Categories() {
 
-   const {data,isLoading,isError,error} = useCategories();
+   const {data,isLoading,isError,error} = UseCategories();
 
     if(isLoading) return <CircularProgress/>
     if(isError) return <Typography color='red'>{error}</Typography>
