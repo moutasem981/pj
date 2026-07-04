@@ -1,7 +1,7 @@
 import { CircularProgress, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
-import UseCategories from '../hoks/UseCategories';
+import UseCategories from '../../hooks/UseCategories';
 
 export default function Categories() {
 
