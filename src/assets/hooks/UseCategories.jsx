@@ -3,8 +3,10 @@ import React from 'react'
 import axiosInstance from '../../api/axiosInstance';
 
 export default function UseCategories() {
+
 const getCategories = async ()=>{
-        const response = await axiosInstance.get(`/Categories`);
+
+    const response = await axiosInstance.get(`/Categories`);
         
         return response.data ;
        
