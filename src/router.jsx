@@ -5,6 +5,7 @@ import Cards from "./assets/pages/cards/Cards";
 import Login from "./assets/pages/login/Login";
 import Register from "./assets/pages/register/Register";
 import UserContextProvider from "./assets/components/context/UserContext";
+import Productsdetails from "./assets/pages/productsdetails/Productsdetails";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,12 @@ const router = createBrowserRouter([
       {
         path:'register',
         element:<Register/>
+      },
+      {
+        path:'products/:id',
+        element:<Productsdetails/>
       }
+      
     ]
   },
 ]);

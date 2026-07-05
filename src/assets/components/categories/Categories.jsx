@@ -13,7 +13,7 @@ export default function Categories() {
 
     <>
     {data.response.data.map((Category)=>
-    <Typography component="h1" variant='h2'>{Category.name}</Typography>
+    <Typography key={Category.id} component="h1" variant='h2'> {Category.name}</Typography>
     )
     }
     </>
