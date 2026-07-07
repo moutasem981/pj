@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Registerschema } from '../../components/vallidation/Registerschema'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from "@hookform/resolvers/yup"
+import axiosInstance from "../../../api/axiosInstance"
 export default function Register() {
 
 
@@ -14,8 +15,8 @@ export default function Register() {
     })
     const Registerform = async (data)=>{
         try{
-            const response = await axios.post(`${import.meta.env.VITE_BURL}/auth/Account/Register`,data);
-            console.log(response);
+            const response = await axiosInstance.post(`/auth/Account/Register`,data);
+            localStorage.setItem("accessToken",response.data.accessToken)
         }
         catch(err){
             setserverErrors(err.response.data.errors);

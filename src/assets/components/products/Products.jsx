@@ -12,24 +12,24 @@ export default function Products() {
 
   return (
     <>
-    <Grid container>
+      <Grid container>
 
-      {data.response.data.map((product) => {
+        {data.response.data.map((product) => {
 
-        return  <Grid size={{xs : 12, sm:6 , md: 4}}>
-          <Link to={`/products/${product.id}`}>
-         <Card sx={{ maxWidth: 345 }}>
-          <CardMedia
-            sx={{ height: 200 }}
-            image={product.image}
-         > </CardMedia>
-        </Card>
-        </Link>
-        </Grid>
-      }
-      )}
+          return <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+            <Link to={`/products/${product.id}`}>
+              <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                  sx={{ height: 200 }}
+                  image={product.image}
+                > </CardMedia>
+              </Card>
+            </Link>
+          </Grid>
+        }
+        )}
 
-</Grid>
+      </Grid>
 
     </>
   )
