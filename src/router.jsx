@@ -6,6 +6,7 @@ import Login from "./assets/pages/login/Login";
 import Register from "./assets/pages/register/Register";
 import UserContextProvider from "./assets/components/context/UserContext";
 import Productsdetails from "./assets/pages/productsdetails/Productsdetails";
+import ProutectedRouter from "./ProutectedRouter";
 
 const router = createBrowserRouter([
   {
@@ -22,9 +23,12 @@ const router = createBrowserRouter([
       },
       {
         path:'cards',
-        element:<UserContextProvider>
+        element: <ProutectedRouter>
+                <UserContextProvider>
                  <Cards/>
                 </UserContextProvider>
+                </ProutectedRouter>
+                
             
        
       },
