@@ -9,11 +9,13 @@ import { useNavigate } from 'react-router-dom'
 
 
 
+
 export default function Login() {
 
   const [serverErrors,setserverErrors] = useState({});
   const setToken = useAuthStore((state)=>state.setToken)
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+
 
   const {register,handleSubmit,formState:{errors}} = useForm({
     resolver:yupResolver(Loginschema)
@@ -25,7 +27,8 @@ export default function Login() {
 
     const response = await axiosInstance.post(`/auth/Account/Login`,data);
     setToken(response.data.accessToken);
-    Navigate('/');
+    navigate('/');
+
   } 
     catch(err){
       setserverErrors(err.response.data.errors)

@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import Mainlayout from './assets/layout/Mainlayout'
 import Home from "./assets/pages/home/Home";
-import Cards from "./assets/pages/cards/Cards";
+import Cart from "./assets/pages/cart/Cart";
 import Login from "./assets/pages/login/Login";
 import Register from "./assets/pages/register/Register";
 import UserContextProvider from "./assets/components/context/UserContext";
@@ -22,10 +22,10 @@ const router = createBrowserRouter([
         element:<Login/>
       },
       {
-        path:'cards',
+        path:'cart',
         element: <ProutectedRouter>
                 <UserContextProvider>
-                 <Cards/>
+                 <Cart/>
                 </UserContextProvider>
                 </ProutectedRouter>
                 
