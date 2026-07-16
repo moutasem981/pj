@@ -11,7 +11,7 @@ export default function UseProductsdetails(id) {
         }
 
         const query = useQuery({
-            queryKey:['product','en','id'],
+            queryKey:['product','en',id],
             queryFn:getProductsdetails,
             staleTime: 1000 * 60 * 5
         })
