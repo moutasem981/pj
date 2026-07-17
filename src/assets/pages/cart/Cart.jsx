@@ -2,12 +2,20 @@ import { useContext } from "react"
 import { UserContext } from "../../components/context/UserContext"
 import { Usecounterstore } from "../../../store/Usecounterstore";
 import useCart from "../../hooks/useCart";
-import { Button, CircularProgress, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
 import useRemoveFormCart from "../../hooks/useRemoveFormCart";
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import useUpdateCartItem from "../../hooks/useUpdateCartItem";
+import useClearCart from "../../hooks/useClearCart";
 
 export default function Cart() {
 const {userName,userAge} =useContext(UserContext);
 const {mutate:RemoveItem,isPending} = useRemoveFormCart();
+const {mutate:updateItem,isPending:updateItemIspading} = useUpdateCartItem();
+const {mutate:clearCart,isPending:clearCartIspading} = useClearCart();
+
+
 
 const x = Usecounterstore((state)=> state.Counter);
 const increment = Usecounterstore((state)=>state.increment)
@@ -20,7 +28,23 @@ if(isLoading){
 if(isError){
   return <Typography color="error">{error.message}</Typography>
 }
+const handleUpdate = (productId,action)=>{
+  const item = data.items.find(i=>i.productId == productId);
 
+  if(action == '+'){
+    updateItem({productId,count:item.count+1})
+  }
+  else{
+    if(item.count == 1){
+      RemoveItem(item.productId)
+    }
+
+   else  {
+      updateItem({productId,count:item.count-1})
+    }
+    
+  }
+}
 console.log(data);
   return (
     <>
@@ -40,7 +64,17 @@ console.log(data);
             <TableRow key={item.id}>
               <TableCell>{item.productName}</TableCell>
               <TableCell>{item.price}</TableCell>
-              <TableCell>{item.count}</TableCell>
+              <TableCell>
+                <Box sx={{display:"flex",alignItems:"center"}}>
+                  <IconButton disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'+')}>
+                    <AddIcon fontSize="small"/>
+                  </IconButton>
+                  <Typography component="p">{item.count}</Typography>
+                  <IconButton disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'-')}>
+                     <RemoveIcon fontSize="small"/>
+                  </IconButton>
+                </Box>
+              </TableCell>
               <TableCell>{item.totalPrice}</TableCell>
               <TableCell><Button
                onClick={()=>RemoveItem(item.productId)} 
@@ -57,6 +91,10 @@ console.log(data);
         </TableBody>
       </Table>
     </TableContainer>
+
+    <Button onClick={()=>clearCart()} disabled={clearCartIspading} variant="contained" color="error">
+        Delet all products
+    </Button>
     </>
   )
 }
