@@ -1,6 +1,7 @@
 import React from 'react'
 import axiosInstance from '../../api/axiosInstance'
 import { useQuery } from '@tanstack/react-query';
+import i18n from '../../i18next';
 
 export default function UseProducts() {
 
@@ -12,7 +13,7 @@ export default function UseProducts() {
          }
 
         const query = useQuery({
-            queryKey: ["products"],
+            queryKey: ["products",i18n.language],
             queryFn: getProducts,
             staleTime: 1000 * 60 * 5
 

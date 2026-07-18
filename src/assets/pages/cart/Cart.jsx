@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import useUpdateCartItem from "../../hooks/useUpdateCartItem";
 import useClearCart from "../../hooks/useClearCart";
+import { useTranslation } from "react-i18next";
 
 export default function Cart() {
 const {userName,userAge} =useContext(UserContext);
@@ -19,8 +20,10 @@ const {mutate:clearCart,isPending:clearCartIspading} = useClearCart();
 
 const x = Usecounterstore((state)=> state.Counter);
 const increment = Usecounterstore((state)=>state.increment)
+const {t} = useTranslation();
 
 const {data,isLoading,isError,error} = useCart()
+
 
 if(isLoading){
   return <CircularProgress/>
@@ -52,11 +55,11 @@ console.log(data);
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>product name</TableCell>
-          <TableCell>price</TableCell>
-          <TableCell>Quntity</TableCell>
-          <TableCell>Total</TableCell>
-          <TableCell>Actions</TableCell>
+            <TableCell>{t('product name')}</TableCell>
+          <TableCell>{t('price')}</TableCell>
+          <TableCell>{t('Quntity')}</TableCell>
+          <TableCell>{t('Total')}</TableCell>
+          <TableCell>{t('Actions')}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

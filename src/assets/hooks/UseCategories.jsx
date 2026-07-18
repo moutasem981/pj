@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react'
 import axiosInstance from '../../api/axiosInstance';
+import i18n from '../../i18next';
 
 export default function UseCategories() {
 
@@ -14,7 +15,7 @@ export default function UseCategories() {
 
 
     const query = useQuery({
-        queryKey: ['Categories'],
+        queryKey: ['Categories', i18n.language],
         queryFn: getCategories,
         staleTime: 1000 * 60 * 5
     })
