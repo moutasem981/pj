@@ -1,8 +1,8 @@
 import React from 'react'
 import UseProductsdetails from '../../hooks/UseProductsdetails'
 import { useParams } from 'react-router-dom';
-import { Box, Button, CircularProgress, Typography } from '@mui/material';
 import useAddToCart from '../../hooks/useAddToCart';
+import { Button } from '@base-ui/react';
 
 export default function Productsdetails() {
 
@@ -12,13 +12,13 @@ export default function Productsdetails() {
     const {mutate:addToCard} = useAddToCart();
 
     const {data , isLoading , isError , error}  = UseProductsdetails(id);
-     if(isLoading) return <CircularProgress/>
+     if(isLoading) return <p>loding .....</p>
 
     return (
-        <Box>
-    <Typography>{data.response.name}</Typography>
-    <Typography>{data.response.description}</Typography>
+        <div>
+    <h2>{data.response.name}</h2>
+    <p>{data.response.description}</p>
     <Button onClick={()=>{addToCard({productId:data.response.id,count:1})}}>add to cart</Button>
-    </Box>
+    </div>
   )
 }

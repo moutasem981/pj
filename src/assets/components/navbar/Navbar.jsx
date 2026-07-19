@@ -2,8 +2,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuthStore from '../../../store/useAuthStore'
 import { useTranslation } from 'react-i18next';
-import { Button } from '@mui/material';
 import i18n from '../../../i18next';
+import { Button } from '@/components/ui/button';
 
 export default function Navbar() {
 

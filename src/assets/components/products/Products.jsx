@@ -1,35 +1,39 @@
 import React from 'react'
 import UseProducts from '../../hooks/UseProducts'
-import { Card, CardMedia, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 export default function Products() {
 
   const { data, isLoading, isError, error } = UseProducts();
 
-  if (isLoading) return <> <Typography component='h1' variant='h1'>loding....</Typography> </>
-  if (isError) return <Typography>{error}</Typography>
+  if (isLoading) return <> <p>loding....</p> </>
+  if (isError) return <p className='text-red-600'>{error}</p>
+  
+
 
   return (
     <>
-      <Grid container>
+      <section>
+        <div className='container'>
 
         {data.response.data.map((product) => {
 
-          return <Grid size={{ xs: 12, sm: 6, md: 4 }}>
+          return <div >
             <Link to={`/products/${product.id}`}>
-              <Card sx={{ maxWidth: 345 }}>
-                <CardMedia
-                  sx={{ height: 200 }}
-                  image={product.image}
-                > </CardMedia>
-              </Card>
+              <div >
+                
+                  <img src={product.image}/>
+                  
+                <p>{product.name}</p>
+                <p>{product.price}$</p>
+              </div>
             </Link>
-          </Grid>
+          </div>
         }
         )}
+        </div>
 
-      </Grid>
+      </section>
 
     </>
   )

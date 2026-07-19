@@ -2,13 +2,21 @@ import { useContext } from "react"
 import { UserContext } from "../../components/context/UserContext"
 import { Usecounterstore } from "../../../store/Usecounterstore";
 import useCart from "../../hooks/useCart";
-import { Box, Button, CircularProgress, IconButton, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from "@mui/material";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table" 
 import useRemoveFormCart from "../../hooks/useRemoveFormCart";
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
 import useUpdateCartItem from "../../hooks/useUpdateCartItem";
 import useClearCart from "../../hooks/useClearCart";
 import { useTranslation } from "react-i18next";
+import { Button } from "@base-ui/react";
+import { Minus, Plus } from "lucide-react";
 
 export default function Cart() {
 const {userName,userAge} =useContext(UserContext);
@@ -26,10 +34,10 @@ const {data,isLoading,isError,error} = useCart()
 
 
 if(isLoading){
-  return <CircularProgress/>
+  return <p>loding .....</p>
 }
 if(isError){
-  return <Typography color="error">{error.message}</Typography>
+  return <p className="text-red-600">{error.message}</p>
 }
 const handleUpdate = (productId,action)=>{
   const item = data.items.find(i=>i.productId == productId);
@@ -51,32 +59,33 @@ const handleUpdate = (productId,action)=>{
 console.log(data);
   return (
     <>
-    <TableContainer>
-      <Table>
-        <TableHead>
+    <Table>
+      <TableCaption>cart</TableCaption>
+      
+        <TableHeader>
           <TableRow>
-            <TableCell>{t('product name')}</TableCell>
-          <TableCell>{t('price')}</TableCell>
-          <TableCell>{t('Quntity')}</TableCell>
-          <TableCell>{t('Total')}</TableCell>
-          <TableCell>{t('Actions')}</TableCell>
+            <TableHead >{t('product name')}</TableHead>
+          <TableHead >{t('price')}</TableHead>
+          <TableHead >{t('Quntity')}</TableHead>
+          <TableHead >{t('Total')}</TableHead>
+          <TableHead >{t('Actions')}</TableHead>
           </TableRow>
-        </TableHead>
+        </TableHeader>
         <TableBody>
           {data.items.map((item)=>(
             <TableRow key={item.id}>
               <TableCell>{item.productName}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>
-                <Box sx={{display:"flex",alignItems:"center"}}>
-                  <IconButton disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'+')}>
-                    <AddIcon fontSize="small"/>
-                  </IconButton>
-                  <Typography component="p">{item.count}</Typography>
-                  <IconButton disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'-')}>
-                     <RemoveIcon fontSize="small"/>
-                  </IconButton>
-                </Box>
+                <dev className='flex items-center '>
+                  <Button variant="outline" size="icon" disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'+')}>
+                    <Plus />
+                  </Button>
+                  <p component="p">{item.count}</p>
+                  <Button variant="outline" size="icon" disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'-')}>
+                     <Minus />
+                  </Button>
+                </dev>
               </TableCell>
               <TableCell>{item.totalPrice}</TableCell>
               <TableCell><Button
@@ -93,7 +102,7 @@ console.log(data);
           
         </TableBody>
       </Table>
-    </TableContainer>
+    
 
     <Button onClick={()=>clearCart()} disabled={clearCartIspading} variant="contained" color="error">
         Delet all products

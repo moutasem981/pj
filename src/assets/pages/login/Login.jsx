@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import axiosInstance from '../../../api/axiosInstance'
-import { Box, Button , TextField, Typography } from '@mui/material'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { Loginschema } from '../../components/vallidation/Loginschema'
 import useAuthStore from '../../../store/useAuthStore'
 import { useNavigate } from 'react-router-dom'
+import { Card } from '@/components/ui/card'
+import { Button } from '@base-ui/react'
 
 
 
@@ -39,27 +40,42 @@ export default function Login() {
   }
   return (
     <>
-     <Box component='section'>
-        <Typography component='h1' variant='h2'>Login</Typography>
+     <section>
+        <h1>Login</h1>
 
          {serverErrors?.length > 0 ? serverErrors.map((error)=>
-        <Typography color='error'>{error}</Typography>   
+        <h2 className='text-red-700'>{error}</h2>   
       ): ''} 
-        <Box onSubmit={handleSubmit(loginform)} component='form' sx={{display:"flex",flexDirection:"column",gap:5, maxWidth:600,marginX:"auto"}}>
+      <Card>
+        
+        <form onSubmit={handleSubmit(loginform)} >
+           
+        <div>
+           
          
-          <TextField id="outlined-basic" {...register("email")} label="email" variant="outlined" 
-            error={errors.email} 
-            helperText={errors.email?.message} />
+          <input type='email'  {...register("email")}  placeholder="name@example.com" 
+            className={errors.email?"border-destructive":""} />
+            
+            {errors.email && (
+                <p className="text-sm text-destructive">{errors.email.message}</p>
+              )}
             
             
         
-          <TextField id="outlined-basic" {...register("password")} label="password" variant="outlined" 
-           error={errors.password}
-           helperText={errors.password?.message}/>
-          <Button variant="contained" type='submit' >
+          <input type='password' {...register("password")} placeholder="••••••" 
+           className={errors.password ?"border-destructive":""}/>
+
+           {errors.password && (
+                <p className="text-sm text-destructive">{errors.password.message}</p>
+              )}
+           </div>
+          <Button  type='submit' >
               login </Button>
-        </Box>
-    </Box>
+                
+        </form>
+        
+        </Card>
+    </section>
     
     </>
   )
