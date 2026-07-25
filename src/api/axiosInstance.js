@@ -10,4 +10,4 @@ const axiosInstance = axios.create({
     config.headers["Accept-language"] = i18n.language;
     return config;
   })
-export default axiosInstance
+export default axiosInstance;

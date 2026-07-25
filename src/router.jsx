@@ -4,9 +4,9 @@ import Home from "./assets/pages/home/Home";
 import Cart from "./assets/pages/cart/Cart";
 import Login from "./assets/pages/login/Login";
 import Register from "./assets/pages/register/Register";
-import UserContextProvider from "./assets/components/context/UserContext";
 import Productsdetails from "./assets/pages/productsdetails/Productsdetails";
 import ProutectedRouter from "./ProutectedRouter";
+import Checkout from "./assets/pages/checkout/Checkout";
 
 const router = createBrowserRouter([
   {
@@ -24,9 +24,9 @@ const router = createBrowserRouter([
       {
         path:'cart',
         element: <ProutectedRouter>
-                <UserContextProvider>
+                
                  <Cart/>
-                </UserContextProvider>
+                
                 </ProutectedRouter>
                 
             
@@ -39,6 +39,17 @@ const router = createBrowserRouter([
       {
         path:'products/:id',
         element:<Productsdetails/>
+      },
+      {
+        path:'Checkout',
+        element: <ProutectedRouter>
+                
+                 <Checkout/>
+                
+                </ProutectedRouter>
+                
+            
+       
       }
       
     ]

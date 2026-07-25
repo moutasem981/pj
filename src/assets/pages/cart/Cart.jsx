@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { UserContext } from "../../components/context/UserContext"
 import { Usecounterstore } from "../../../store/Usecounterstore";
 import useCart from "../../hooks/useCart";
 import {
@@ -17,9 +16,9 @@ import useClearCart from "../../hooks/useClearCart";
 import { useTranslation } from "react-i18next";
 import { Button } from "@base-ui/react";
 import { Minus, Plus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart() {
-const {userName,userAge} =useContext(UserContext);
 const {mutate:RemoveItem,isPending} = useRemoveFormCart();
 const {mutate:updateItem,isPending:updateItemIspading} = useUpdateCartItem();
 const {mutate:clearCart,isPending:clearCartIspading} = useClearCart();
@@ -29,6 +28,7 @@ const {mutate:clearCart,isPending:clearCartIspading} = useClearCart();
 const x = Usecounterstore((state)=> state.Counter);
 const increment = Usecounterstore((state)=>state.increment)
 const {t} = useTranslation();
+const navigate = useNavigate();
 
 const {data,isLoading,isError,error} = useCart()
 
@@ -40,7 +40,7 @@ if(isError){
   return <p className="text-red-600">{error.message}</p>
 }
 const handleUpdate = (productId,action)=>{
-  const item = data.items.find(i=>i.productId == productId);
+  const item = data?.items?.find(i=>i.productId == productId);
 
   if(action == '+'){
     updateItem({productId,count:item.count+1})
@@ -107,6 +107,7 @@ console.log(data);
     <Button onClick={()=>clearCart()} disabled={clearCartIspading} variant="contained" color="error">
         Delet all products
     </Button>
+    <Button onClick={()=>navigate('/Checkout')}>Process to chekout </Button>
     </>
   )
 }

@@ -33,7 +33,7 @@ export default function Register() {
         {serverErrors?.length > 0 ? serverErrors.map((error)=>
         <p color='error'>{error}</p>   
       ): ''}
-        <input onSubmit={handleSubmit(Registerform)} component='form' sx={{display:"flex",flexDirection:"column",gap:5, maxWidth:600,marginX:"auto"}}>
+        <form onSubmit={handleSubmit(Registerform)}  >
           <input  {...register("fullName")} placeholder="fullName" 
           
           />
@@ -44,10 +44,10 @@ export default function Register() {
           <input type='text'  {...register("phoneNumber")} placeholder="phoneNumber" 
            />
           <input type='password' {...register("password")} placeholder="password" 
-           />
+          />
           <Button  type='submit' disabled={isSubmitting}>
-            {isSubmitting? "loding" : ''}</Button>
-        </input>
+            {isSubmitting? '' : ''}</Button>
+        </form>
     </section>
     
     </>

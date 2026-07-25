@@ -7,6 +7,7 @@ import useAuthStore from '../../../store/useAuthStore'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '@/components/ui/card'
 import { Button } from '@base-ui/react'
+import useLogin from '@/assets/hooks/useLogin'
 
 
 
@@ -14,8 +15,7 @@ import { Button } from '@base-ui/react'
 export default function Login() {
 
   const [serverErrors,setserverErrors] = useState({});
-  const setToken = useAuthStore((state)=>state.setToken)
-  const navigate = useNavigate();
+ 
 
 
   const {register,handleSubmit,formState:{errors}} = useForm({
@@ -23,21 +23,7 @@ export default function Login() {
 
   });
 
-  const loginform = async (data)=>{
-    try{
-
-    const response = await axiosInstance.post(`/auth/Account/Login`,data);
-    setToken(response.data.accessToken);
-    navigate('/');
-
-  } 
-    catch(err){
-      setserverErrors(err.response.data.errors)
-
-    }
-
-
-  }
+  const {mutate:Login } = useLogin();
   return (
     <>
      <section>
@@ -48,7 +34,7 @@ export default function Login() {
       ): ''} 
       <Card>
         
-        <form onSubmit={handleSubmit(loginform)} >
+        <form onSubmit={handleSubmit(Login)} >
            
         <div>
            
