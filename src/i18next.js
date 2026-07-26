@@ -24,7 +24,11 @@ i18n
           "price": "price",
           "Quntity": "Quntity",
           "Total": "Total",
-          "Actions": "Actions"
+          "Actions": "Actions",
+          "Page not Found!!!": "Page not Found!!!",
+          "The page you are looking for doesn't exist. Please try searching for some other page, or return to the website's homepage to find what you're looking for.":
+          "The page you are looking for doesn't exist. Please try searching for some other page, or return to the website's homepage to find what you're looking for.",
+          "BACK TO HOME":"BACK TO HOME",
         }
       },
        ar: {
@@ -39,7 +43,11 @@ i18n
           "price": "السعر",
           "Quntity": "الكمية",
           "Total": "المجموع",
-          "Actions": "إجراءات"
+          "Actions": "إجراءات",
+          "Page not Found!!!":"الصفحة غير موجودة!!!",
+          "The page you are looking for doesn't exist. Please try searching for some other page, or return to the website's homepage to find what you're looking for.":
+          "الصفحة التي تبحث عنها غير موجودة. يرجى محاولة البحث عن صفحة أخرى، أو العودة إلى الصفحة الرئيسية للموقع للعثور على ما تبحث عنه.",
+           "BACK TO HOME":"العودة إلى الصفحة الرئيسية",
 
 
         }

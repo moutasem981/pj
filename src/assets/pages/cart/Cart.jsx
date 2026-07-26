@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@base-ui/react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Error from "@/assets/components/error/Error";
 
 export default function Cart() {
 const {mutate:RemoveItem,isPending} = useRemoveFormCart();
@@ -37,10 +38,10 @@ if(isLoading){
   return <p>loding .....</p>
 }
 if(isError){
-  return <p className="text-red-600">{error.message}</p>
+  return <Error/>
 }
 const handleUpdate = (productId,action)=>{
-  const item = data?.items?.find(i=>i.productId == productId);
+  const item = data.items.find(i=>i.productId == productId);
 
   if(action == '+'){
     updateItem({productId,count:item.count+1})
