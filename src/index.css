@@ -2,12 +2,15 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
     --font-heading: var(--font-sans);
-    --font-sans: 'Geist Variable', sans-serif;
+    --font-family: "Open Sans", sans-serif;
+    --font-button: "Mulish", sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -46,6 +49,9 @@
     --radius-2xl: calc(var(--radius) * 1.8);
     --radius-3xl: calc(var(--radius) * 2.2);
     --radius-4xl: calc(var(--radius) * 2.6);
+    --color-primary-bg:#566F6B;
+    --color-primary-addres:#C6C6C6;
+    --color-secondary:#394744;
 }
 
 :root {
@@ -125,6 +131,19 @@
     @apply bg-background text-foreground;
     }
   html {
-    @apply font-sans;
+    @apply font-family;
+    }
+    .text-main{
+      @apply text-[10px] md:text-[16px]  font-light text-primary-bg leading-[150%];
+    }
+    .button-main{
+      @apply text-[14px]  font-button bg-white py-2.5 px-4.5 rounded-full text-primary-bg leading-[150%] border transition duration-300
+ border-secondary hover:bg-primary-bg/10  focus:outline-2 focus:outline-offset-2 focus:outline-secondary active:bg-primary-bg/30;
+    }
+    .lists-nav{
+      @apply hover:scale-125 hover:text-primary-bg/50 focus:scale-115 focus:text-primary-bg/50 focus:underline  transition duration-300;
     }
 }
+@utility container {
+        @apply mx-auto px-4 max-w-287.5;
+    }
