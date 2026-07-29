@@ -64,7 +64,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <nav className='border-b shadow sticky w-full top-0 bg-white pt-7 pb-5.5'>
+      <nav className='border-b shadow sticky w-full top-0 bg-background pt-7 pb-5.5'>
         <div className='container flex justify-between   mx-auto z-40 items-center '>
           <div className='block md:hidden'>
              <Sheet>
