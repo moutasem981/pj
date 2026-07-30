@@ -64,7 +64,10 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      <nav className='border-b shadow sticky w-full top-0 bg-background pt-7 pb-5.5'>
+
+
+
+      <nav className='border-b shadow sticky w-full top-0 bg-background pt-7 pb-5.5 z-50'>
         <div className='container flex justify-between   mx-auto z-40 items-center '>
           <div className='block md:hidden'>
              <Sheet>
@@ -107,7 +110,7 @@ export default function Navbar() {
         </Sheet>
             
           </div>
-          <div><img src={logo} /></div>
+          <div><img src={logo} alt='logo to Faher' /></div>
           <div className='lg:w-[45%] sm:w-[30%] hidden sm:block'>
 
             <form className='bg-primary-addres rounded-lg flex items-center justify-between '>
