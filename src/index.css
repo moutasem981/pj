@@ -134,14 +134,14 @@
     @apply font-family;
     }
     .text-main{
-      @apply text-[10px] md:text-[16px]  font-light text-primary-bg leading-[150%];
+      @apply text-[14px] md:text-[16px]  font-light text-primary-bg leading-[150%];
     }
     .button-main{
-      @apply text-[14px]  font-button bg-white py-2.5 px-4.5 rounded-full text-primary-bg leading-[150%] border transition duration-300
+      @apply md:text-[14px]  text-[18px]   font-button bg-white py-2.5 px-4.5 rounded-full text-primary-bg leading-[150%] border transition duration-300
  border-secondary hover:bg-primary-bg/10  focus:outline-2 focus:outline-offset-2 focus:outline-secondary active:bg-primary-bg/30;
     }
     .btn-start{
-      @apply font-button bg-white text-primary-bg rounded-full text-[12px] md:text-[14px] py-3 px-6 font-light hover:bg-secondary hover:text-white transition-all duration-800 focus:outline-2 ;
+      @apply font-button bg-white text-primary-bg rounded-full text-[18px] md:text-[14px] py-3 px-6 font-light hover:bg-secondary hover:text-white transition-all duration-800 focus:outline-2 ;
     }
     .lists-nav{
       @apply hover:scale-125 hover:text-primary-bg/50 focus:scale-115 focus:text-primary-bg/50  transition duration-300;
@@ -151,13 +151,13 @@
     }
 
      h1{
-        @apply text-[28px] sm:text-[37px] xl:text-[45px]
+        @apply text-[32px] sm:text-[38px] xl:text-[45px]
                leading-11.5 sm:leading-15.75  xl:leading-20 
                tracking-[-1px] font-bold text-primary-addres;
     }
 
     h2{
-        @apply text-[22px] sm:text-[30px] xl:text-[36px]
+        @apply text-[27px] sm:text-[32px] xl:text-[38px]
                leading-9 sm:leading-11 xl:leading-13.75 
                tracking-normal font-bold text-[#C1BCBC];
     }
