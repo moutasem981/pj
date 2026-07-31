@@ -7,7 +7,7 @@ export default function useCart() {
   
     const getItems = async ()=>{
 
-        const response = await authAxiosInstance.get('/Cartsss')
+        const response = await authAxiosInstance.get('/Carts')
         return response.data;
     }
 

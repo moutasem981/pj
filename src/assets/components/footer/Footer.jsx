@@ -38,7 +38,7 @@ export default function Footer() {
         <div>
           <form className='  flex gap-x-4 gap-y-2 items-center justify-between sm:flex-nowrap flex-wrap'>      
                 <input className=' focus:outline-none rounded-full md:w-70 text-[14px] font-normal text-primary-bg py-2 px-3.5 font-button bg-white border-0' type="text" placeholder={t('Enter your email')} />
-                <Button className=' rounded-full py-4.5 px-4.5  text-white bg-[#00616B] button-main  ' variant="outline"  >{t('Subscribe')}</Button>
+                <Button className=' rounded-full py-4.5 px-4.5  text-white bg-[#00616B] button-main  '   >{t('Subscribe')}</Button>
               </form>
         </div>
         </div>
