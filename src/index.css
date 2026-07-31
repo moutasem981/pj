@@ -161,6 +161,9 @@
                leading-9 sm:leading-11 xl:leading-13.75 
                tracking-normal font-bold text-[#C1BCBC];
     }
+    .feature{
+      @apply  min-w-[300px] py-6 px-8 flex rounded-lg flex-col items-center gap-5 transition-all duration-600 hover:scale-105 hover:shadow-xl/30;
+    }
 }
 @utility container {
         @apply mx-auto px-4 lg:max-w-[85%] ;

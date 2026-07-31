@@ -52,8 +52,8 @@ export default function Navbar() {
       <div className='bg-primary-bg text-main text-primary-addres md:text-[12px] '>
         <div className='container flex justify-center md:justify-between items-center py-3'>
           <div></div>
-          <div className=' flex gap-2 flex-wrap'>
-            <p>{t('Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!')}</p>
+          <div>
+            <p className=' inline mr-2'>{t('Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!')}</p>
             <Link to='/Products' className='underline '>{t('ShopNow')}</Link>
           </div>
           <div className='hidden md:flex gap-4 items-center'>

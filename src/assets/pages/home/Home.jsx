@@ -5,6 +5,7 @@ import heroImg from '../../../img/home/heroImg.webp'
 import { useTranslation } from 'react-i18next';
 import i18n from '@/i18next';
 import { useNavigate } from 'react-router-dom';
+import { Headset, ShieldCheck, Van } from 'lucide-react';
 
 export default function Home() {
 
@@ -19,11 +20,11 @@ const navigate = useNavigate();
           <div className='md:text-start text-center md:mx-0 mx-auto '>
             <div>
             <h1 className=''>{t('Discover Everything You Need')}</h1>
-            <p className='text-main text-white/70  md:w-7/10 md:mx-0 mx-auto  '>
-            {t('Your search ends here: unlock exclusive savings, experience effortless shopping, and find top-rated items for your')} :
-           <Typewriter component='div' className='font-bold '
+            <p className='text-main text-white/70 md:w-137.5 w-full md:mx-0 mx-auto  '>
+            {t('Your search ends here: unlock exclusive savings, experience effortless shopping, and find top-rated items for your') } 
+           <Typewriter component='span' className='font-bold '
              options={{
-                  strings: [t('premium tech & gadgets.'), t('modern fashion & apparel.') , t('home & living essentials.') , t('everyday beauty products.')],
+                  strings: [t(' premium tech & gadgets.'), t(' modern fashion & apparel.') , t(' home & living essentials.') , t(' everyday beauty products.')],
                   autoStart: true,
                  loop: true,
                      }}
@@ -41,10 +42,53 @@ const navigate = useNavigate();
 
 
          {/* Features section */}
-       <section className='flex justify-center sm:justify-around gap-y-3 items-center   h-[600px]'>
-        <div className='h-100 bg-primary-bg'>saxs</div>
-        <div  className='h-100 bg-primary-bg'>xsax</div>
-        <div  className='h-100 bg-primary-bg'>sxaxas</div>
+       <section className='text-center md:pt-18 md:pb-25 py-15'>
+        <h2 className=' mb-14'>{t('Features')}</h2>
+        <div className='container flex justify-center gap-10 items-center flex-wrap lg:flex-nowrap '>
+        <div className='feature'>
+          <div className='flex'>
+            <div className='bg-primary-bg/30 p-3 rounded-full'>
+            <div className='bg-primary-bg p-2 rounded-full'>
+              <Van size={30}  color='#fff'/>
+            </div>
+            </div>
+            </div>
+          <div>
+            <h3 className='text-main font-bold'>{t('FREE AND FAST DELIVERY')}</h3>
+            <span className='text-main text-[14px]'>{t('Free delivery for all orders over $140')}</span>
+
+          </div>
+        </div>
+        <div className='feature'>
+          <div className='flex'>
+            <div className='bg-primary-bg/30 p-3 rounded-full'>
+            <div className='bg-primary-bg p-2 rounded-full'>
+              <Headset size={30}  color='#fff'/>
+            </div>
+            </div>
+            </div>
+          <div>
+            <h3 className='text-main font-bold'>{t('24/7 CUSTOMER SERVICE')}</h3>
+            <span className='text-main text-[14px]'>{t('Friendly 24/7 customer support')}</span>
+
+          </div>
+        </div>
+        <div className='feature'>
+          <div className='flex'>
+            <div className='bg-primary-bg/30 p-3 rounded-full'>
+            <div className='bg-primary-bg p-2 rounded-full'>
+        
+              <ShieldCheck size={30}  color='#fff'/>
+            </div>
+            </div>
+            </div>
+          <div>
+            <h3 className='text-main font-bold'>{t('MONEY BACK GUARANTEE')}</h3>
+            <span className='text-main text-[14px]'>{t('We return money within 30 days')}</span>
+
+          </div>
+        </div>
+        </div>
        </section>
 
       </main>
