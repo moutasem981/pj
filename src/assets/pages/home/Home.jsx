@@ -7,11 +7,9 @@ import i18n from '@/i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Headset, ShieldCheck, Van } from 'lucide-react';
 import Products from '@/assets/components/products/Products';
-import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
-  CarouselItem,
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
@@ -20,6 +18,7 @@ export default function Home() {
 
 const {t} = useTranslation();
 const navigate = useNavigate();
+
 
   return (
       <main className='md:relative  z-10 '>
@@ -102,18 +101,30 @@ const navigate = useNavigate();
 
          <section className='container flex flex-col gap-10 items-center justify-center overflow-hidden md:pb-20 pb-10  '>
           <h2>{t('Latest Products')}</h2>
-          <div>
-             <Carousel className="w-full px-12 relative  ">
-      <CarouselContent className="-ml-1 py-6">
-        <Products number={9}/>
+          <div className='w-full '>
+            
+    <Carousel className='w-full '
+      opts={{
+        align: "start",
+      }}
+      >
+      <CarouselContent className='xl:w-25/100 lg:w-35/100 sm:w-5/10  w-75/100  text-center my-7 mx-2 '>
         
+            
+                  <Products number={9}/>
+                      
+    
       </CarouselContent>
-      <CarouselPrevious className=" left-0" />
-      <CarouselNext className=" right-0" />
+      <CarouselPrevious />
+      <CarouselNext />
     </Carousel>
           </div>
           <Link to='/Products' className='button-main px-10'>{t('View all products')}</Link>
          </section>
+
+
+
+      
 
       </main>
     

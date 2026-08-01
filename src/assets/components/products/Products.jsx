@@ -17,6 +17,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useTranslation } from 'react-i18next';
+import { CarouselItem } from '@/components/ui/carousel';
 
 export default function Products({number}) {
 
@@ -37,12 +38,12 @@ export default function Products({number}) {
       
         {(number ? data.response.data.slice(0,number): data.response.data).map((product) => {
 
-          return <div key={product.id} className='rounded-lg border border-[#353535]/40 relative overflow-hidden w-70 z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300 ' >
+          return <CarouselItem key={product.id} className=' bg-white pl-0 rounded-lg border border-[#353535]/40 relative overflow-hidden w-70 z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300 ' >
             <div className='flex justify-center items-center '>
              <img className='w-40 mb-3' src={product.image}/>
             <Link className='absolute z-10 right-5 top-5'> <Heart color='#566F6B'  /> </Link> 
             </div>
-            <div className='flex flex-col items-center bg-[#EBF3F5] pb-4 '>
+            <div className='flex flex-col items-center bg-[#EBF3F5] pb-4 w-full '>
               <h3 className='text-main text-[20px] mt-2'>{product.name}</h3>
               <span className='text-[#353535] text-[14px]'>{product.price}$</span>
               <span className='mb-2'>{product.rate}</span>
@@ -74,7 +75,7 @@ export default function Products({number}) {
             </div>
 
            
-          </div>
+          </CarouselItem>
         }
         )}
     

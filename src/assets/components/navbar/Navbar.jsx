@@ -29,6 +29,7 @@ import {
   SheetTrigger,
   SheetClose
 } from "@/components/ui/sheet"
+import { useTheme } from '../theme-provider/ThemeProvider';
 
 export default function Navbar() {
 
@@ -40,6 +41,7 @@ export default function Navbar() {
     const newLng = i18n.language === "ar" ? "en" : "ar"
     i18n.changeLanguage(newLng);
   }
+const { theme, setTheme } = useTheme();  
 
   const handlelogout = () => {
     Logout(),
@@ -59,17 +61,20 @@ export default function Navbar() {
           <div className='hidden md:flex gap-4 items-center'>
             <Link className='flex gap-2 items-center ' onClick={changeLanguage}><Languages size={14} color='#C6C6C6' />
               {i18n.language === "ar" ? "English" : "العربية"}</Link>
-            <Link className='flex gap-2 items-center '>
-              {i18n.language === "cd" ?  <Sun  /> : <Moon  />}</Link>
+            
+             <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")} >
+              {theme === "dark" ? <Sun size={18} color='#C6C6C6' /> : <Moon size={18} color='#C6C6C6' />}
+            </button>
           </div>
         </div>
       </div>
 
 
 
-      <nav className='border-b shadow sticky w-full top-0 bg-background pt-7 pb-5.5 z-50'>
-        <div className='container flex justify-between   mx-auto z-40 items-center '>
-          <div className='block md:hidden'>
+      <nav className='border-b shadow sticky w-full top-0 bg-background pt-7 pb-5.5 z-50 '>
+        <div className='container flex justify-between   mx-auto z-40 items-center  '>
+          <div className='inline md:hidden'>
              <Sheet>
           <SheetTrigger render={<Link>
             <TextAlignJustify color='#566F6B' /> </Link>} />
@@ -79,30 +84,33 @@ export default function Navbar() {
                 <button className='py-2.5 px-3.5'><Search color='#566F6B' size={20} /></button>
                 <input className='w-[90%] focus:outline-none border-0' type="text" placeholder={t('Search for a product')} />
               </form></SheetTitle>
-             {Token &&(<SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' to='/'><User color='#fff' />
+             {Token &&(<SheetClose><Link className='SheetClose' to='/'><User color='#fff' />
               {t('My profile')}   </Link></SheetClose>)} 
-              <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' to='/'><House color='#fff' />
+              <SheetClose><Link className='SheetClose' to='/'><House color='#fff' />
                 {t('Home')}</Link></SheetClose>
-                <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' to='/Products'><ShoppingCart color='#fff' />
+                <SheetClose><Link className='SheetClose' to='/Products'><ShoppingCart color='#fff' />
                  {t('Products')}</Link></SheetClose>
-              <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' to='/About'><Info color='#fff' />
+              <SheetClose><Link className='SheetClose' to='/About'><Info color='#fff' />
                 {t('About')}</Link></SheetClose>
               
-              <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' to='/Contact us'><MessageCircleQuestionMark color='#fff' />
+              <SheetClose><Link className='SheetClose' to='/Contact us'><MessageCircleQuestionMark color='#fff' />
                  {t('Contact us')}</Link></SheetClose>
-              <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' onClick={changeLanguage}><Languages color='#fff' />
+              <SheetClose><Link className='SheetClose' onClick={changeLanguage}><Languages color='#fff' />
                 
               {i18n.language === "ar" ? "English" : "العربية"}</Link></SheetClose>
-              <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200' >
-              {i18n.language === "cd" ? <span className='flex gap-3 items-center'> <Sun  />  {t('Light mode')} </span>: <span className='flex gap-3 items-center'> <Moon  /> {t('Dark mode')}  </span>}</Link></SheetClose>
-              
+              <SheetClose>  
+             <button className='SheetClose'
+              onClick={()=>setTheme(theme === "light"? "dark":"light")}>
+              {theme === "light" ? <button><span className='flex gap-3 items-center'> <Moon  /> {t('Dark mode')}  </span></button>:<button><span className='flex gap-3 items-center'> <Sun  />  {t('Light mode')} </span></button>}
+             </button>
+              </SheetClose>
              {Token ? <>
-             <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200 border-t-2' to='/Login' onClick={handlelogout}> <LogOutIcon color='#fff' />
+             <SheetClose><Link className='SheetClose border-t-2' to='/Login' onClick={handlelogout}> <LogOutIcon color='#fff' />
                 {t('Sign Out')}</Link></SheetClose>
 
              </>:
              <>
-             <SheetClose><Link className='flex gap-3 items-center py-4 px-3 text-[20px] w-full  hover:bg-black/30 transition delay-200 border-t-2' to='/Register'> <LogIn color='#fff' />
+             <SheetClose><Link className='SheetClose border-t-2' to='/Register'> <LogIn color='#fff' />
                  {t('Sign up')}</Link> </SheetClose>
              </>} 
             </SheetHeader>
@@ -110,7 +118,7 @@ export default function Navbar() {
         </Sheet>
             
           </div>
-          <div><img src={logo} alt='logo to Faher' /></div>
+          <div className='ms-auto'><img src={logo} alt='logo to Faher' /></div>
           <div className='lg:w-[45%] sm:w-[30%] hidden sm:block'>
 
             <form className='bg-primary-addres rounded-lg flex items-center justify-between '>
@@ -125,7 +133,7 @@ export default function Navbar() {
             <Link className='lists-nav' to='/Contact us'> {t('Contact us')}</Link>
           </div>
 
-          <div>
+          <div className='ms-auto '>
 
             {!Token && (<Link to='/Login' className='button-main '>{t('Sign In')}</Link>)}
           </div>
