@@ -7,6 +7,7 @@ import Register from "./assets/pages/register/Register";
 import Productsdetails from "./assets/pages/productsdetails/Productsdetails";
 import ProutectedRouter from "./ProutectedRouter";
 import Checkout from "./assets/pages/checkout/Checkout";
+import AllProducts from "./assets/pages/allproducts/AllProducts";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path:'register',
         element:<Register/>
+      },
+      {
+        path:'Products',
+        element:<AllProducts/>
       },
       {
         path:'products/:id',

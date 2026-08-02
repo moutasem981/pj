@@ -118,7 +118,7 @@ const { theme, setTheme } = useTheme();
         </Sheet>
             
           </div>
-          <div className='ms-auto'><img src={logo} alt='logo to Faher' /></div>
+          <div className='max-md:ms-auto'><img src={logo} alt='logo to Faher' /></div>
           <div className='lg:w-[45%] sm:w-[30%] hidden sm:block'>
 
             <form className='bg-primary-addres rounded-lg flex items-center justify-between '>
@@ -133,7 +133,7 @@ const { theme, setTheme } = useTheme();
             <Link className='lists-nav' to='/Contact us'> {t('Contact us')}</Link>
           </div>
 
-          <div className='ms-auto '>
+          <div className='max-md:ms-auto '>
 
             {!Token && (<Link to='/Login' className='button-main '>{t('Sign In')}</Link>)}
           </div>

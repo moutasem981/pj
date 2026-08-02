@@ -38,7 +38,7 @@ export default function Products({number}) {
       
         {(number ? data.response.data.slice(0,number): data.response.data).map((product) => {
 
-          return <CarouselItem key={product.id} className=' bg-white pl-0 rounded-lg border border-[#353535]/40 relative overflow-hidden w-70 z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300 ' >
+          return <CarouselItem key={product.id} className=' bg-white pl-0 rounded-lg border border-primary-bg relative overflow-hidden w-70 z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300 ' >
             <div className='flex justify-center items-center '>
              <img className='w-40 mb-3' src={product.image}/>
             <Link className='absolute z-10 right-5 top-5'> <Heart color='#566F6B'  /> </Link> 

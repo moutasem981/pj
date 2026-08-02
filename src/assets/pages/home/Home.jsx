@@ -12,12 +12,15 @@ import {
   CarouselContent,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
+import Categories from '@/assets/components/categories/Categories';
 
 export default function Home() {
 
 const {t} = useTranslation();
 const navigate = useNavigate();
+const { i18n } = useTranslation();
+const dir = i18n.dir();
 
 
   return (
@@ -99,6 +102,8 @@ const navigate = useNavigate();
         </div>
        </section>
 
+
+        {/* Latest products */}
          <section className='container flex flex-col gap-10 items-center justify-center overflow-hidden md:pb-20 pb-10  '>
           <h2>{t('Latest Products')}</h2>
           <div className='w-full '>
@@ -106,6 +111,7 @@ const navigate = useNavigate();
     <Carousel className='w-full '
       opts={{
         align: "start",
+        direction: dir,
       }}
       >
       <CarouselContent className='xl:w-25/100 lg:w-35/100 sm:w-5/10  w-75/100  text-center my-7 mx-2 '>
@@ -121,6 +127,35 @@ const navigate = useNavigate();
           </div>
           <Link to='/Products' className='button-main px-10'>{t('View all products')}</Link>
          </section>
+
+
+
+
+         <section className='container flex flex-col gap-10 items-center justify-center overflow-hidden md:pb-20 pb-10  '>
+          <h2>{t('Categories')}</h2>
+          <div className='w-full '>
+            
+    <Carousel className='w-full '
+      opts={{
+        align: "start",
+        direction: dir,
+      }}
+      >
+      <CarouselContent className='xl:w-25/100 lg:w-35/100 sm:w-5/10  w-75/100  text-center my-7 mx-2 '>
+        
+            
+                  <Categories/>
+                      
+    
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+          </div>
+          <Link to='/Products' className='button-main px-10'>{t('View all Categories')}</Link>
+         </section>
+
+         
 
 
 
