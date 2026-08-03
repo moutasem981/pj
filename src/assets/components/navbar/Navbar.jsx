@@ -69,6 +69,7 @@ const { theme, setTheme } = useTheme();
           </div>
         </div>
       </div>
+  
 
 
 
@@ -80,10 +81,7 @@ const { theme, setTheme } = useTheme();
             <TextAlignJustify color='#566F6B' /> </Link>} />
           <SheetContent side={i18n.dir() === "rtl" ? "right" : "left"} className='bg-primary-bg text-white'>
             <SheetHeader className='px-0'>
-              <SheetTitle className='mt-6'> <form className='bg-primary-addres mx-2 rounded-lg flex items-center justify-between '>
-                <button className='py-2.5 px-3.5'><Search color='#566F6B' size={20} /></button>
-                <input className='w-[90%] focus:outline-none border-0' type="text" placeholder={t('Search for a product')} />
-              </form></SheetTitle>
+              <SheetTitle className='mt-6'> </SheetTitle>
              {Token &&(<SheetClose><Link className='SheetClose' to='/'><User color='#fff' />
               {t('My profile')}   </Link></SheetClose>)} 
               <SheetClose><Link className='SheetClose' to='/'><House color='#fff' />
@@ -118,26 +116,21 @@ const { theme, setTheme } = useTheme();
         </Sheet>
             
           </div>
-          <div className='max-md:ms-auto'><img src={logo} alt='logo to Faher' /></div>
-          <div className='lg:w-[45%] sm:w-[30%] hidden sm:block'>
-
-            <form className='bg-primary-addres rounded-lg flex items-center justify-between '>
-              <button className='py-2.5 px-3.5'><Search color='#566F6B' size={20} /></button>
-              <input className='w-[90%] focus:outline-none border-0' type="text" placeholder={t('Search for a product')} />
-            </form>
-          </div>
-          <div className='hidden md:flex gap-4 items-center text-main text-[14px]  '>
+          <div>
+            <img src={logo} alt='logo to Faher' />
+            </div>
+          
+          <div className='hidden md:flex gap-6 items-center text-main text-[14px]  '>
             <Link className='lists-nav' to='/'> {t('Home')}</Link>
             <Link className='lists-nav' to='/About'> {t('About')}</Link>
             <Link className='lists-nav' to='/Products'> {t('Products')}</Link>
             <Link className='lists-nav' to='/Contact us'> {t('Contact us')}</Link>
           </div>
 
-          <div className='max-md:ms-auto '>
-
-            {!Token && (<Link to='/Login' className='button-main '>{t('Sign In')}</Link>)}
-          </div>
-          <div className='flex items-center gap-6'>
+          <div>
+            {Token ? <>
+            
+             <div className='flex items-center gap-6'>
             {Token && (<>
               <Link to='/Cart' className='lists-nav' ><ShoppingCart color='#566F6B' className='w-5' /></Link>
               <Link to='#' className='lists-nav'  ><Heart color='#566F6B' className='w-5' /> </Link>
@@ -166,6 +159,13 @@ const { theme, setTheme } = useTheme();
             )}
 
           </div>
+            </>:<>
+            {!Token && (<Link to='/Login' className='button-main '>{t('Sign In')}</Link>)}
+            </>}
+
+            
+          </div>
+         
 
 
         </div>
