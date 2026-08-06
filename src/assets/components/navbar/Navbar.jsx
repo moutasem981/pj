@@ -52,7 +52,7 @@ const { theme, setTheme } = useTheme();
 
     <>
       <div className='bg-primary-bg text-main text-primary-addres md:text-[12px] '>
-        <div className='container flex justify-center md:justify-between items-center py-3'>
+        <div className='container flex justify-center md:justify-between items-center py-3 max-md:hidden'>
           <div></div>
           <div>
             <p className=' inline mr-2'>{t('Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!')}</p>

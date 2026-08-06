@@ -18,6 +18,7 @@ import { Button } from "@base-ui/react";
 import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Error from "@/assets/components/error/Error";
+import useCartQuantity from "@/assets/hooks/useCartQuantity";
 
 export default function Cart() {
 const {mutate:RemoveItem,isPending} = useRemoveFormCart();
@@ -40,23 +41,7 @@ if(isLoading){
 if(isError){
   return <Error/>
 }
-const handleUpdate = (productId,action)=>{
-  const item = data.items.find(i=>i.productId == productId);
-
-  if(action == '+'){
-    updateItem({productId,count:item.count+1})
-  }
-  else{
-    if(item.count == 1){
-      RemoveItem(item.productId)
-    }
-
-   else  {
-      updateItem({productId,count:item.count-1})
-    }
-    
-  }
-}
+const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
 console.log(data);
   return (
     <>
@@ -78,15 +63,15 @@ console.log(data);
               <TableCell>{item.productName}</TableCell>
               <TableCell>{item.price}</TableCell>
               <TableCell>
-                <dev className='flex items-center '>
-                  <Button variant="outline" size="icon" disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'+')}>
+                <div className='flex items-center '>
+                  <Button variant="outline" size="icon" disabled={isUpdatingQuantity} onClick={() => updateQuantity(item.productId, item.count, "+")} >
                     <Plus />
                   </Button>
                   <p component="p">{item.count}</p>
-                  <Button variant="outline" size="icon" disabled={updateItemIspading} onClick={()=>handleUpdate(item.productId,'-')}>
+                  <Button variant="outline" size="icon" disabled={isUpdatingQuantity} onClick={() => updateQuantity(item.productId, item.count, "-")}>
                      <Minus />
                   </Button>
-                </dev>
+                </div>
               </TableCell>
               <TableCell>{item.totalPrice}</TableCell>
               <TableCell><Button
