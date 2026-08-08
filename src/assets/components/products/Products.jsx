@@ -16,6 +16,8 @@ import {
 import { useTranslation } from 'react-i18next';
 import { CarouselItem } from '@/components/ui/carousel';
 import Stars from '../Stars/Stars';
+import { Button } from "@/components/ui/button"
+import { toast } from 'sonner';
 
 export default function Products({ number, search = '', minPrice = '', maxPrice = '', sortBy = '', ascending = true }) {
 
@@ -38,6 +40,18 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
     const matchMax = maxPrice === '' || item.price <= Number(maxPrice);
     return matchName && matchMin && matchMax;
   });
+  
+  function handleAddCart(productId, productName,){
+   addToCart({ productId, count: 1 });
+    toast.success(productName, {
+          description: t('Added to cart'),
+        action: {
+      label: t('View Cart'), 
+      onClick: () => navigate('/Cart'), 
+    },
+        })
+  }
+  console.log(handleAddCart);
 
   if (number) list = list.slice(0, number);
 
@@ -45,17 +59,17 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
     <>
       {list.map((product) => (
         <CarouselItem key={product.id} className='bg-white pl-0 rounded-lg border border-primary-bg relative overflow-hidden min-w-[240px] z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300'>
-          <div className='flex justify-center items-center'>
+          <Link  to={`/products/${product.id}`} className='flex justify-center items-center'>
             <img className='w-40 mb-3' src={product.image} />
             <Link className='absolute z-10 right-5 top-5'> <Heart color='#566F6B' /> </Link>
-          </div>
+          </Link>
           <div className='flex flex-col items-center bg-[#EBF3F5] pb-4 w-full'>
             <h3 className='text-main text-[20px] mt-2'>{product.name}</h3>
             <span className='text-[#353535] text-[14px]'>{product.price}$</span>
             <span className='mb-2.5'><Stars rate={product.rate} /></span>
-            <div className='flex justify-around items-center w-full px-5'>
+            <div className='w-full'>
               {Token ? (
-                <button onClick={() => { addToCart({ productId: product.id, count: 1 }) }} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'>{t('Add to Cart')}</button>
+                <button onClick={() => handleAddCart(product.id, product.name,product.image)} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10 mx-auto'>{t('Add to Cart')}</button>
               ) : (
                 <Dialog>
                   <DialogTrigger render={<button className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'>{t('Add to Cart')}</button>} />
@@ -73,7 +87,7 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
                   </DialogContent>
                 </Dialog>
               )}
-              <Link className='text-main text-[14px] underline' to={`/products/${product.id}`}>{t('details')}</Link>
+            
             </div>
           </div>
         </CarouselItem>

@@ -19,11 +19,14 @@ import { Minus, Plus } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Error from "@/assets/components/error/Error";
 import useCartQuantity from "@/assets/hooks/useCartQuantity";
+import { toast } from "sonner";
 
 export default function Cart() {
 const {mutate:RemoveItem,isPending} = useRemoveFormCart();
 const {mutate:updateItem,isPending:updateItemIspading} = useUpdateCartItem();
 const {mutate:clearCart,isPending:clearCartIspading} = useClearCart();
+const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
+
 
 
 
@@ -32,7 +35,17 @@ const increment = Usecounterstore((state)=>state.increment)
 const {t} = useTranslation();
 const navigate = useNavigate();
 
-const {data,isLoading,isError,error} = useCart()
+const {data,isLoading,isError} = useCart()
+
+
+function handleRemove(productId,productName ){
+   RemoveItem(productId);
+    toast.error(productName, {
+      description: t('Deleted'),
+       
+        })
+  }
+
 
 
 if(isLoading){
@@ -41,8 +54,7 @@ if(isLoading){
 if(isError){
   return <Error/>
 }
-const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
-console.log(data);
+
   return (
     <>
     <Table>
@@ -75,7 +87,7 @@ console.log(data);
               </TableCell>
               <TableCell>{item.totalPrice}</TableCell>
               <TableCell><Button
-               onClick={()=>RemoveItem(item.productId)} 
+               onClick={()=>handleRemove(item.productId,item.productName)} 
               disabled={isPending}
                color="error">remove</Button></TableCell>
               

@@ -8,6 +8,7 @@ import Productsdetails from "./assets/pages/productsdetails/Productsdetails";
 import ProutectedRouter from "./ProutectedRouter";
 import Checkout from "./assets/pages/checkout/Checkout";
 import AllProducts from "./assets/pages/allproducts/AllProducts";
+import Favorites from "./assets/pages/favorites/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -29,9 +30,15 @@ const router = createBrowserRouter([
                  <Cart/>
                 
                 </ProutectedRouter>
+      },
+      {
+        path:'favorites',
+        element: <ProutectedRouter>
                 
-            
-       
+                 <Favorites/>
+        
+                </ProutectedRouter>
+      
       },
       {
         path:'register',

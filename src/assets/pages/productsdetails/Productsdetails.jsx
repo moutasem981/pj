@@ -31,12 +31,12 @@ export default function Productsdetails() {
           <h1 className='text-primary-bg'>{t('Product Detail')}</h1>
         </div>
         <div className='flex max-md:flex-col max-md:justify-center gap-x-8 border border-primary-addres py-4 px-4'>
-          <div className='md:w-5/10 mx-auto '>
-            <img id='image-product' src={data.response.image} alt="product image" className=' max-h-140 mx-auto border border-b-gray-600 mb-2' />
-            <div className=' flex gap-1.5'>
-              <img src={data.response.image} alt="product image" onClick={() => document.getElementById('image-product').src = data.response.image} className='w-25/100 border border-b-gray-600 mx-w-25 ' />
+          <div className='md:w-5/10 mx-auto flex gap-2 '>
+            <img id='image-product' src={data.response.image} alt="product image" className=' w-8/10 max-h-140 mx-auto border border-b-gray-600 mb-2' />
+            <div className=' flex flex-col gap-1.5'>
+              <img src={data.response.image} alt="product image" onClick={() => document.getElementById('image-product').src = data.response.image} className=' border border-b-gray-600  max-h-30 ' />
               {data.response.subImages.map((img, index) =>
-                <img key={index} src={img} alt="product image" onClick={() => document.getElementById('image-product').src = img} className='w-25/100 border border-b-gray-600 mx-w-25' />)}
+                <img key={index} src={img} alt="product image" onClick={() => document.getElementById('image-product').src = img} className=' border border-b-gray-600 max-h-30' />)}
             </div>
           </div>
           <div className='flex flex-col gap-12 md:w-5/10  text-main pt-8'>

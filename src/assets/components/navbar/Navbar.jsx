@@ -133,7 +133,7 @@ const { theme, setTheme } = useTheme();
              <div className='flex items-center gap-6'>
             {Token && (<>
               <Link to='/Cart' className='lists-nav' ><ShoppingCart color='#566F6B' className='w-5' /></Link>
-              <Link to='#' className='lists-nav'  ><Heart color='#566F6B' className='w-5' /> </Link>
+              <Link to='/favorites' className='lists-nav'  ><Heart color='#566F6B' className='w-5' /> </Link>
              <DropdownMenu   >
                 <DropdownMenuTrigger className='lists-nav hidden md:block' render={<Link variant="ghost" size="icon" className="rounded-full "><User color='#566F6B' className='w-5' /> </Link>}
                 />

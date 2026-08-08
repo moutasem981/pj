@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './i18next'
 import { useTranslation } from 'react-i18next'
 import { ThemeProvider } from './assets/components/theme-provider/ThemeProvider'
+import { Toaster } from 'sonner'
 
 
 export default function App() {
@@ -24,6 +25,7 @@ const queryClient = new QueryClient()
         <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
       </QueryClientProvider>
+      <Toaster position="bottom-right" richColors />
   </ThemeProvider>
 
   )
