@@ -1,6 +1,6 @@
 import React from 'react'
 import UseProductsdetails from '../../hooks/UseProductsdetails'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useAddToCart from '../../hooks/useAddToCart';
 import Error from '@/assets/components/error/Error';
 import { useTranslation } from 'react-i18next';
@@ -8,20 +8,48 @@ import { Heart, ShoppingCart } from 'lucide-react';
 import Stars from '@/assets/components/Stars/Stars';
 import useCartQuantity from '@/assets/hooks/useCartQuantity';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import useFavorites from '@/store/useFavorites';
+import useAuthStore from '@/store/useAuthStore';
+import NotLogged from '@/assets/components/notLogged/NotLogged';
+import { toast } from 'sonner';
 
 export default function Productsdetails() {
 
 
   const { id } = useParams();
   const { t } = useTranslation();
+    const Token = useAuthStore((state) => state.token);
+  
 
-  const { mutate: addToCard } = useAddToCart();
+  const { mutate: addToCart } = useAddToCart();
 
 
   const { data, isLoading, isError } = UseProductsdetails(id);
+
+  const favorites = useFavorites((state) => state.favorites);
+  const addFavorite = useFavorites((state) => state.addFavorite);
+  const removeFavorite = useFavorites((state) => state.removeFavorite);
+  const navigate = useNavigate();
+
+   function handleAddCart(productId, productName,) {
+      addToCart({ productId, count: 1 });
+      toast.success(productName, {
+        description: t('Added to cart'),
+        action: {
+          label: t('View Cart'),
+          onClick: () => navigate('/Cart'),
+        },
+      })
+    }
+
   if (isLoading) return <p>loding .....</p>
   if (isError) return <Error />
-  console.log(data);
+
+  const product = data.response;
+
+  const favorite = favorites.some(
+    (item) => item.id === product.id
+  );
 
 
   return (
@@ -32,7 +60,7 @@ export default function Productsdetails() {
         </div>
         <div className='flex max-md:flex-col max-md:justify-center gap-x-8 border border-primary-addres py-4 px-4'>
           <div className='md:w-5/10 mx-auto flex gap-2 '>
-            <img id='image-product' src={data.response.image} alt="product image" className=' w-8/10 max-h-140 mx-auto border border-b-gray-600 mb-2' />
+            <img id='image-product' src={data.response.image} alt="product image" className=' w-8/10 max-h-145 mx-auto border border-b-gray-600 mb-2' />
             <div className=' flex flex-col gap-1.5'>
               <img src={data.response.image} alt="product image" onClick={() => document.getElementById('image-product').src = data.response.image} className=' border border-b-gray-600  max-h-30 ' />
               {data.response.subImages.map((img, index) =>
@@ -53,8 +81,25 @@ export default function Productsdetails() {
 
             </div>
             <div className='w-full mx-auto'>
-              <button onClick={() => { addToCard({ productId: product.id, count: 1 }) }} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'><span><ShoppingCart /></span> {t('Add to Cart')}</button>
-              <button className='mt-5 button-main flex gap-2 items-center justify-center w-7/10'><span><Heart /></span> {t('Add to favorites')}</button>
+            {Token ? <>
+              <button onClick={() => handleAddCart(data.response.id , data.response.name )} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'><span><ShoppingCart /></span> {t('Add to Cart')}</button>
+              <button onClick={() => { if (favorite) { removeFavorite(product.id); } else { addFavorite(product); } }} className='mt-5 button-main flex gap-2 items-center justify-center w-7/10'
+              ><span>
+                  <Heart
+                    className={
+                      favorite
+                        ? 'fill-red-500 text-red-500'
+                        : ''
+                    }
+                  />
+                </span>
+                {favorite ? t('Remove from favorites') : t('Add to favorites')}</button>
+            </>:<div className='flex flex-col gap-5'>
+            <NotLogged text={t('Add to Cart')} />
+            <NotLogged  text={<span  className='flex gap-2 items-center '>
+               {t('Add to favorites')} <Heart className={ favorite ? 'fill-red-500 text-red-500' : '' }/>
+                 </span>
+           } /> </div>}
 
             </div>
           </div>
