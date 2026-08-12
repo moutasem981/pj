@@ -1,38 +1,34 @@
+import i18n from "@/i18next";
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
 
-const useFavorites = create(
-  persist(
-    (set) => ({
-      favorites: [],
+const useFavorites = create((set) => ({
+  favorites: JSON.parse(localStorage.getItem("favorites",)) || [],
 
-      addFavorite: (product) =>
-        set((state) => {
+  addFavorite: (product) => {
+    set((state) => {
+      const newFavorites = [...state.favorites, product];
 
-          const exists = state.favorites.some(
-            (item) => item.id === product.id
-          );
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
 
-          if (exists) {
-            return state;
-          }
+      return {
+        favorites: newFavorites,
+      };
+    });
+  },
 
-          return {
-            favorites: [...state.favorites, product],
-          };
-        }),
+  removeFavorite: (productId) => {
+    set((state) => {
+      const newFavorites = state.favorites.filter(
+        (product) => product.id !== productId
+      );
 
-      removeFavorite: (productId) =>
-        set((state) => ({
-          favorites: state.favorites.filter(
-            (product) => product.id !== productId
-          ),
-        })),
-    }),
-    {
-      name: "favorites",
-    }
-  )
-);
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+
+      return {
+        favorites: newFavorites,
+      };
+    });
+  },
+}));
 
 export default useFavorites;

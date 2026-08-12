@@ -36,8 +36,7 @@ const {t} = useTranslation();
 const navigate = useNavigate();
 
 const {data,isLoading,isError} = useCart()
-
-
+console.log(data)
 function handleRemove(productId,productName ){
    RemoveItem(productId);
     toast.error(productName, {

@@ -1,16 +1,31 @@
 import React from 'react';
 import useFavorites from '@/store/useFavorites';
-import { Heart } from 'lucide-react';
+import { Heart, ShoppingCart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'sonner';
+import useAddToCart from '@/assets/hooks/useAddToCart';
+import { useNavigate } from 'react-router-dom';
 
 export default function Favorites() {
 
   const {t} = useTranslation();
 
   const favorites = useFavorites((state) => state.favorites);
+    const { mutate: addToCart } = useAddToCart();
+    const navigate = useNavigate();
   const removeFavorite = useFavorites(
     (state) => state.removeFavorite
   );
+   function handleAddCart(productId, productName,) {
+      addToCart({ productId, count: 1 });
+      toast.success(productName, {
+        description: t('Added to cart'),
+        action: {
+          label: t('View Cart'),
+          onClick: () => navigate('/Cart'),
+        },
+      })
+    }
 
   return (
 
@@ -29,7 +44,7 @@ export default function Favorites() {
           <p className='text-main'>{t('There are no products in your favorites list yet. You will find many featured products on the products page.')}</p>
          </div>
        ) :
-      <div className='max-h-180 overflow-y-auto '>
+      <div className='max-h-150 overflow-y-auto '>
          {favorites.map((product) =>(
         <div  key={product.id} className='flex justify-between items-center gap-3  p-3 border border-primary-addres'>
         <div className='w-15'>
@@ -38,7 +53,9 @@ export default function Favorites() {
          <div className='flex flex-col ps-2 text-start  w-9/10 text-primary-bg'>
           <h3>{product.name}</h3>
         <span className='text-[12px]'>{product.price}$</span>
+        
           </div> 
+          <button onClick={() => handleAddCart(product.id, product.name)} className='me-4 button-main py-1 px-4'><ShoppingCart className='text-primary-bg'/></button>
           <div>
              <button onClick={() => removeFavorite(product.id) }> <Heart className="fill-red-500 text-red-500" />
              </button>

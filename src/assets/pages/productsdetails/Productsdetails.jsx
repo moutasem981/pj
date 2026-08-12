@@ -50,7 +50,8 @@ export default function Productsdetails() {
   const favorite = favorites.some(
     (item) => item.id === product.id
   );
-
+   
+  const {image , subImages , name , rate ,price ,quantity , reviews} = data.response ;
 
   return (
     <main>
@@ -60,29 +61,29 @@ export default function Productsdetails() {
         </div>
         <div className='flex max-md:flex-col max-md:justify-center gap-x-8 border border-primary-addres py-4 px-4'>
           <div className='md:w-5/10 mx-auto flex gap-2 '>
-            <img id='image-product' src={data.response.image} alt="product image" className=' w-8/10 max-h-145 mx-auto border border-b-gray-600 mb-2' />
+            <img id='image-product' src={image} alt="product image" className=' w-8/10 max-h-145 mx-auto border border-b-gray-600 mb-2' />
             <div className=' flex flex-col gap-1.5'>
-              <img src={data.response.image} alt="product image" onClick={() => document.getElementById('image-product').src = data.response.image} className=' border border-b-gray-600  max-h-30 ' />
-              {data.response.subImages.map((img, index) =>
+              <img src={image} alt="product image" onClick={() => document.getElementById('image-product').src = data.response.image} className=' border border-b-gray-600  max-h-30 ' />
+              {subImages.map((img, index) =>
                 <img key={index} src={img} alt="product image" onClick={() => document.getElementById('image-product').src = img} className=' border border-b-gray-600 max-h-30' />)}
             </div>
           </div>
           <div className='flex flex-col gap-12 md:w-5/10  text-main pt-8'>
             <div className='flex flex-col gap-5'>
-              <h2 className='text-primary-bg'>{data.response.name}</h2>
-              <span><Stars rate={data.response.rate} /></span>
+              <h2 className='text-primary-bg'>{name}</h2>
+              <span><Stars rate={rate} /></span>
             </div>
-            <span className='text-[20px] font-bold'>{t('the price')}: ${data.response.price}</span>
+            <span className='text-[20px] font-bold'>{t('the price')}: ${price}</span>
             <div className='flex flex-col gap-2'>
               <span>{t('Available quantity')} :</span>
               <div className='w-34 h-9 rounded-lg border border-primary-bg flex justify-center items-center' >
-                {data.response.quantity}
+                {quantity}
               </div>
 
             </div>
             <div className='w-full mx-auto'>
             {Token ? <>
-              <button onClick={() => handleAddCart(data.response.id , data.response.name )} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'><span><ShoppingCart /></span> {t('Add to Cart')}</button>
+              <button onClick={() => handleAddCart(data.response.id ,name )} className='button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10'><span><ShoppingCart /></span> {t('Add to Cart')}</button>
               <button onClick={() => { if (favorite) { removeFavorite(product.id); } else { addFavorite(product); } }} className='mt-5 button-main flex gap-2 items-center justify-center w-7/10'
               ><span>
                   <Heart
@@ -125,7 +126,7 @@ export default function Productsdetails() {
               </div>
               <div className='grid gap-y-10  md:grid-cols-2'>
 
-                {data.response.reviews.map((review) =>
+                {reviews.map((review) =>
                   <Link key={review.id} className='border border-primary-addres rounded-lg  overflow-auto shadow-lg py-3.5 px-3 w-8/10 mx-auto flex flex-col justify-between gap-2  hover:scale-110 transition-all duration-300'>
                     <div className='flex justify-between items-center'>
                       <h4 className='text-primary-bg font-bold'>{review.userName}</h4>

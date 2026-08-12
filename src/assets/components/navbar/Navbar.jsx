@@ -30,6 +30,8 @@ import {
   SheetClose
 } from "@/components/ui/sheet"
 import { useTheme } from '../theme-provider/ThemeProvider';
+import UseProducts from '@/assets/hooks/UseProducts';
+import useCart from '@/assets/hooks/useCart';
 
 export default function Navbar() {
 
@@ -42,7 +44,7 @@ export default function Navbar() {
     i18n.changeLanguage(newLng);
   }
 const { theme, setTheme } = useTheme();  
-
+const {data} = useCart();
   const handlelogout = () => {
     Logout(),
       navigate('/login')
@@ -132,7 +134,9 @@ const { theme, setTheme } = useTheme();
             
              <div className='flex items-center gap-6'>
             {Token && (<>
-              <Link to='/Cart' className='lists-nav' ><ShoppingCart color='#566F6B' className='w-5' /></Link>
+              <Link to='/Cart' className='lists-nav relative' >
+                 {data?.items?.length > 0 &&( <span className='text-[8px] absolute bottom-4 left-4 border border-primary-bg rounded-full px-1 text-primary-bg font-bold'>{data?.items?.length} </span>)}
+                 <ShoppingCart color='#566F6B' className='w-5' /></Link>
               <Link to='/favorites' className='lists-nav'  ><Heart color='#566F6B' className='w-5' /> </Link>
              <DropdownMenu   >
                 <DropdownMenuTrigger className='lists-nav hidden md:block' render={<Link variant="ghost" size="icon" className="rounded-full "><User color='#566F6B' className='w-5' /> </Link>}
