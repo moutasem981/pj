@@ -125,7 +125,7 @@ const dir = i18n.dir();
       <CarouselNext />
     </Carousel>
           </div>
-          <Link to='/Products' className='button-main px-10'>{t('View all products')}</Link>
+          <Link to='/Products' className='button-Secondary px-10'>{t('View all products')}</Link>
          </section>
 
 
@@ -152,7 +152,7 @@ const dir = i18n.dir();
       <CarouselNext />
     </Carousel>
           </div>
-          <Link to='/Products' className='button-main px-10'>{t('View all Categories')}</Link>
+          <Link to='/Products' className='button-Secondary px-10'>{t('View all Categories')}</Link>
          </section>
 
          

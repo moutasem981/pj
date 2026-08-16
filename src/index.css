@@ -141,11 +141,16 @@
       @apply text-[14px] md:text-[16px]  font-light text-primary-bg leading-[150%];
     }
     .button-main{
-      @apply md:text-[14px]  text-[18px]   font-button bg-white py-2.5 px-4.5 rounded-full text-primary-bg leading-[150%] border transition duration-300
- border-secondary hover:bg-primary-bg/10  focus:outline-2 focus:outline-offset-2 focus:outline-secondary active:bg-primary-bg/30;
+      @apply md:text-[14px]  text-[18px]   font-button bg-sidebar-border py-2.5 px-4.5 rounded-full text-primary-bg leading-[150%] border transition-all duration-700
+ border-secondary hover:bg-primary-bg/10 hover:text-primary-addres   focus:outline-2 focus:outline-offset-2 focus:outline-secondary active:bg-primary-bg/30;
     }
+    .button-Secondary{
+    @apply font-button hover:bg-sidebar-accent hover:text-primary-bg rounded-full text-[18px] md:text-[14px] py-3 px-6 font-light bg-secondary text-white transition-all duration-800 focus:outline-2 border border-primary-bg/30 ;
+
+    }
+
     .btn-start{
-      @apply font-button bg-white text-primary-bg rounded-full text-[18px] md:text-[14px] py-3 px-6 font-light hover:bg-secondary hover:text-white transition-all duration-800 focus:outline-2 ;
+      @apply font-button bg-sidebar-accent text-primary-bg rounded-full text-[18px] md:text-[14px] py-3 px-6 font-light hover:bg-secondary hover:text-white transition-all duration-800 focus:outline-2 ;
     }
     .lists-nav{
       @apply hover:scale-125 hover:text-primary-bg/50 focus:scale-115 focus:text-primary-bg/50  transition duration-300;

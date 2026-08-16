@@ -12,7 +12,7 @@ export default function useCart() {
     }
 
     return useQuery({
-        queryKey:["cart",i18n.language],
+        queryKey:["cart", i18n.language],
         queryFn: getItems,
         staleTime: 1000 * 60 * 5
 

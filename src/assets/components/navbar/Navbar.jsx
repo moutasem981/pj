@@ -32,6 +32,7 @@ import {
 import { useTheme } from '../theme-provider/ThemeProvider';
 import UseProducts from '@/assets/hooks/UseProducts';
 import useCart from '@/assets/hooks/useCart';
+import useFavorites from '@/store/useFavorites';
 
 export default function Navbar() {
 
@@ -45,6 +46,7 @@ export default function Navbar() {
   }
 const { theme, setTheme } = useTheme();  
 const {data} = useCart();
+const favorites = useFavorites((state)=> state.favorites)
   const handlelogout = () => {
     Logout(),
       navigate('/login')
@@ -84,7 +86,7 @@ const {data} = useCart();
           <SheetContent side={i18n.dir() === "rtl" ? "right" : "left"} className='bg-primary-bg text-white'>
             <SheetHeader className='px-0'>
               <SheetTitle className='mt-6'> </SheetTitle>
-             {Token &&(<SheetClose><Link className='SheetClose' to='/'><User color='#fff' />
+             {Token &&(<SheetClose><Link className='SheetClose' t='/'o><User color='#fff' />
               {t('My profile')}   </Link></SheetClose>)} 
               <SheetClose><Link className='SheetClose' to='/'><House color='#fff' />
                 {t('Home')}</Link></SheetClose>
@@ -137,7 +139,9 @@ const {data} = useCart();
               <Link to='/Cart' className='lists-nav relative' >
                  {data?.items?.length > 0 &&( <span className='text-[8px] absolute bottom-4 left-4 border border-primary-bg rounded-full px-1 text-primary-bg font-bold'>{data?.items?.length} </span>)}
                  <ShoppingCart color='#566F6B' className='w-5' /></Link>
-              <Link to='/favorites' className='lists-nav'  ><Heart color='#566F6B' className='w-5' /> </Link>
+              <Link to='/favorites' className='lists-nav relative'  >
+              {favorites?.length > 0 &&( <span className='text-[8px] absolute bottom-4 left-4 border border-primary-bg rounded-full px-1 text-primary-bg font-bold'>{favorites?.length} </span>)}
+              <Heart color='#566F6B' className='w-5' /> </Link>
              <DropdownMenu   >
                 <DropdownMenuTrigger className='lists-nav hidden md:block' render={<Link variant="ghost" size="icon" className="rounded-full "><User color='#566F6B' className='w-5' /> </Link>}
                 />
