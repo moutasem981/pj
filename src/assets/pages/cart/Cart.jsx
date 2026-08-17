@@ -73,7 +73,7 @@ export default function Cart() {
 
                   </div>
 
-                  <div className='flex items-center bg-chart-1 rounded-sm text-primary-bg border border-primary-bg p-1 gap-0.5'>
+                  <div className='flex items-center bg-sidebar-border rounded-sm text-primary-bg border border-primary-bg p-1 gap-0.5'>
                     <Button variant="outline" size="icon" disabled={isUpdatingQuantity} onClick={() => updateQuantity(product.productId, product.count, "+")} >
                       <Plus size={18} />
                     </Button>
@@ -89,9 +89,13 @@ export default function Cart() {
                 </div>
               ))}
             </div>}
+           {data?.items?.length > 0 && (<div className="flex justify-center"> 
+             <button className="button-Secondary bg-red-900 mt-4 hover:bg-red-400 w-4/10 " onClick={() => clearCart()} disabled={clearCartIspading} >
+            {t('Delet all products')}
+          </button></div>)} 
 
         </div>
-        <div className=" max-w-100 mx-auto pt-6 md:w-3/10 bg-sidebar-border rounded-xl overflow-hidden">
+        <div className=" max-w-100 mx-auto pt-6 md:w-3/10 bg-sidebar-border rounded-xl shadow-xl/30 overflow-hidden">
           <form action="" className="border-y border-primary-bg py-4 text-primary-bg ">
             <label className="text-[14px] font-bold ps-2">{t('Discount code:')}</label>
             <div className="flex flex-wrap  gap-2 ps-2">
@@ -113,7 +117,7 @@ export default function Cart() {
           </div>
           <div className="text-main flex flex-col gap-3">
             <div className=" flex justify-between px-10 text-[20px] font-bold"><span>{t('TOTAL')}</span> <span>{data.cartTotal}$</span></div>
-            <button className="button-Secondary mx-3 mt-4" onClick={() => navigate('/Checkout')}>{t('Buy Now')} </button>
+            <button disabled={data?.items?.length === 0} className="button-Secondary mx-3 mt-4" onClick={() => navigate('/Checkout')}>{t('Buy Now')} </button>
             <p className="text-[13px] px-1">{t('*Custom orders need a few working days to be created. More info here')}</p>
 
           </div>
@@ -122,9 +126,7 @@ export default function Cart() {
         </div>
       </section>
 
-       <Button onClick={() => clearCart()} disabled={clearCartIspading} variant="contained" color="error">
-            Delet all products
-          </Button>
+      
 
     </main>
   )
