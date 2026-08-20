@@ -4,7 +4,7 @@ import useAuthStore from '../../../store/useAuthStore'
 import { useTranslation } from 'react-i18next';
 import i18n from '../../../i18next';
 import logo from "../../../img/logo/Faher.svg"
-import { Heart, House, Info, Languages, LogIn, MessageCircleQuestionMark, Moon, Search, ShoppingCart, Sun, TextAlignJustify, User } from 'lucide-react';
+import { CircleQuestionMark, Heart, House, Info, Languages, LogIn, Logs, MessageCircleQuestionMark, Moon, Search, ShoppingCart, Sun, TextAlignJustify, User } from 'lucide-react';
 import {
 
   CreditCardIcon,
@@ -87,7 +87,7 @@ const favorites = useFavorites((state)=> state.favorites)
             <SheetHeader className='px-0'>
               <SheetTitle className='mt-6'> </SheetTitle>
              {Token &&(<SheetClose><Link className='SheetClose' t='/'o><User color='#fff' />
-              {t('My profile')}   </Link></SheetClose>)} 
+              {t('My profile')}   </Link></SheetClose> )} 
               <SheetClose><Link className='SheetClose' to='/'><House color='#fff' />
                 {t('Home')}</Link></SheetClose>
                 <SheetClose><Link className='SheetClose' to='/Products'><ShoppingCart color='#fff' />
@@ -97,6 +97,7 @@ const favorites = useFavorites((state)=> state.favorites)
               
               <SheetClose><Link className='SheetClose' to='/Contact us'><MessageCircleQuestionMark color='#fff' />
                  {t('Contact us')}</Link></SheetClose>
+                <SheetClose> <Link className='SheetClose'  to='/faq'><CircleQuestionMark color='#fff' />{t('FAQ')}</Link> </SheetClose>
               <SheetClose><Link className='SheetClose' onClick={changeLanguage}><Languages color='#fff' />
                 
               {i18n.language === "ar" ? "English" : "العربية"}</Link></SheetClose>
@@ -143,23 +144,43 @@ const favorites = useFavorites((state)=> state.favorites)
               {favorites?.length > 0 &&( <span className='text-[8px] absolute bottom-4 left-4 border border-primary-bg rounded-full px-1 text-primary-bg font-bold'>{favorites?.length} </span>)}
               <Heart color='#566F6B' className='w-5' /> </Link>
              <DropdownMenu   >
-                <DropdownMenuTrigger className='lists-nav hidden md:block' render={<Link variant="ghost" size="icon" className="rounded-full "><User color='#566F6B' className='w-5' /> </Link>}
+                <DropdownMenuTrigger  className='hidden md:block' render={ <button  className="rounded-full "><User color='#566F6B' className='w-5 lists-nav' /> </button>}
                 />
-                <DropdownMenuContent className='max-w-40' align='end'  >
-                  <DropdownMenuGroup>
+                <DropdownMenuContent className='w-75 text-main' bg-card align='end'  >
+                  <DropdownMenuGroup >
                     <DropdownMenuItem>
+                      <Link className='flex gap-4 py-2 w-full'  to='/Profile'>
                       <User />
                       {t('My profile')}
+                      </Link>
+                    </DropdownMenuItem>
+                    
+                    <DropdownMenuItem>
+                      <Link className='flex gap-4 py-2 w-full'  to='/orders'>
+                      <Logs />
+                      {t('My Orders')}
+                      </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <CreditCardIcon />
+                      <Link className='flex gap-4 py-2 w-full'  to='/Contact'>
+                       <CreditCardIcon />
                       {t('Contact us')}
+                      </Link>
                     </DropdownMenuItem>
+                    <DropdownMenuItem>
+                      <Link className='flex gap-4 py-2 w-full'  to='/faq'>
+                      <CircleQuestionMark />
+                      {t('FAQ')}
+                      </Link>
+                    </DropdownMenuItem>
+                   
                   </DropdownMenuGroup>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                    <LogOutIcon />
-                    <Link to='/Login' onClick={handlelogout}>{t('Sign Out')} </Link>
+                    
+                    <Link to='/Login' className='flex gap-4 py-2 w-full'  onClick={handlelogout}>
+                     <LogOutIcon /> {t('Sign Out')} 
+                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>

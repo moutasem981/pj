@@ -30,10 +30,10 @@ export default function Footer() {
       <footer className=' text-primary-addres'>
         <div className=' bg-secondary'>
         <div className='container'>
-          <div className='flex items-center flex-wrap sm:flex-nowrap  justify-between py-6 md:py-12 gap-3'>
+          <div className='flex items-center flex-wrap sm:flex-nowrap  justify-between py-5 md:py-8 gap-3'>
         <div className='gap-2'>
           <span className='text-side text-[16px] md:text-[20px]'>{t('Join our our story')}</span>
-          <p className='text-side'>{t('We’ll send you a nice letter once per week. No spam.')}</p>
+          <p className='text-side'>{t('We’ll send you Link nice letter once per week. No spam.')}</p>
         </div>
         <div>
           <form className='  flex gap-x-4 gap-y-2 items-center justify-between sm:flex-nowrap flex-wrap'>      
@@ -42,42 +42,43 @@ export default function Footer() {
               </form>
         </div>
         </div>
-        </div></div>
+        </div>
+        </div>
       <div className=' bg-primary-bg'>
         <div className='container '>
-            <div class="flex flex-col sm:flex-row justify-between items-center pt-6 gap-6 pb-11.25 md:pb-23 ">
+            <div class="flex flex-col sm:flex-row justify-between items-center pt-5 gap-6 pb-8  ">
                 <div>
                     <Link to="/"> <img src={logo} alt="logo to Faher "  /></Link>
                 </div>
                 <div class="flex gap-6 sm:gap-3 ">
-                    <a href="https://www.instagram.com/moutasem112" target="_blank">
+                    <Link href="https://www.instagram.com/moutasem112" target="_blank">
                         <img src={instagramIcon} alt="Instagram logo image"
                             class="duration-400 hover:scale-125"/>
-                    </a>
-                    <a href="https://www.facebook.com/moutasem112" target="_blank">
+                    </Link>
+                    <Link href="https://www.facebook.com/moutasem112" target="_blank">
                         <img src={facebookIcon} alt="Facebook logo image"
                             class="duration-400 hover:scale-125"/>
-                    </a>
-                    <a href="https://www.linkedin.com/in/moutasem-hassan-75b119387/" target="_blank">
+                    </Link>
+                    <Link href="https://www.linkedin.com/in/moutasem-hassan-75b119387/" target="_blank">
                         <img src={linkedIcon} alt="LinkedIn logo image"
                             class="duration-400 hover:scale-125"/>
-                    </a>
+                    </Link>
 
                 </div>
             </div>
 
             <div class="flex flex-col lg:flex-row justify-between items-center gap-y-14">
                 <div class="w-full lg:w-auto">
-                    <div class="pb-7.75 border-b">
+                    <div class="pb-4 border-b">
                         <span class="text-side ">{t('Menu')}</span>
                     </div>
-                    <div class="pt-7.75 flex gap-28.75 text-sm tracking-[1.4px] leading-4 font-normal uppercase">
-                        <div class="flex flex-col gap-4 md:gap-4.5">
+                    <div class="pt-4 flex gap-28.75 text-sm tracking-[1.4px] leading-4 font-normal uppercase">
+                        <div class="flex flex-col gap-3 md:gap-4">
                             <Link to='/' class="active:underline duration-400 hover:scale-125">{t('Home')}</Link>
                             <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('About')}</Link>
                             <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Products')}</Link>
                         </div>
-                        <div class="flex flex-col gap-4 md:gap-4.5">
+                        <div class="flex flex-col gap-3 md:gap-4">
                             <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Contact us')}</Link>
                           <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Our Team')}</Link>
                            <Link to='/Products' class="active:underline duration-400 hover:scale-125">{t('Shop Now')}</Link>
@@ -100,7 +101,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div class="mt-8 md:mt-16  pt-6 pb-6 flex justify-between gap-6   border-t border-amber-50/30 sm:flex-nwrap flex-wrap">
+            <div class="mt-8   pt-3 pb-3 flex justify-between gap-3   border-t border-amber-50/30 sm:flex-nwrap flex-wrap">
             <div className='flex flex-col items-start md:text-[16px] text-[12px]'>
               <span>{t('Addres: Al-Bayader Street, Talfit, south of Nablus')}</span>
               <span>{t('Telephone')}: +970 594 547 679</span>

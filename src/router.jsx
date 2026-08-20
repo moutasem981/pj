@@ -9,6 +9,7 @@ import ProutectedRouter from "./ProutectedRouter";
 import Checkout from "./assets/pages/checkout/Checkout";
 import AllProducts from "./assets/pages/allproducts/AllProducts";
 import Favorites from "./assets/pages/favorites/Favorites";
+import MyProfile from "./assets/pages/myprofile/MyProfile";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,18 @@ const router = createBrowserRouter([
         element: <ProutectedRouter>
                 
                  <Checkout/>
+                
+                </ProutectedRouter>
+                
+            
+       
+      }
+      ,
+      {
+        path:'Profile',
+        element: <ProutectedRouter>
+                
+                 <MyProfile/>
                 
                 </ProutectedRouter>
                 

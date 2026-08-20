@@ -1,28 +1,37 @@
-import { Usecounterstore } from "../../../store/Usecounterstore";
 import useCart from "../../hooks/useCart";
 
 import useRemoveFormCart from "../../hooks/useRemoveFormCart";
 import useUpdateCartItem from "../../hooks/useUpdateCartItem";
 import useClearCart from "../../hooks/useClearCart";
 import { useTranslation } from "react-i18next";
-import { Button } from "@base-ui/react";
 import { Minus, Plus, ShoppingCart, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Error from "@/assets/components/error/Error";
 import useCartQuantity from "@/assets/hooks/useCartQuantity";
 import { toast } from "sonner";
+import { Trash2Icon } from "lucide-react"
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogMedia,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Button } from "@/components/ui/button"
 
 export default function Cart() {
   const { mutate: RemoveItem, isPending } = useRemoveFormCart();
-  const { mutate: updateItem, isPending: updateItemIspading } = useUpdateCartItem();
   const { mutate: clearCart, isPending: clearCartIspading } = useClearCart();
   const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
 
 
 
 
-  const x = Usecounterstore((state) => state.Counter);
-  const increment = Usecounterstore((state) => state.increment)
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -74,13 +83,13 @@ export default function Cart() {
                   </div>
 
                   <div className='flex items-center bg-sidebar-border rounded-sm text-primary-bg border border-primary-bg p-1 gap-0.5'>
-                    <Button variant="outline" size="icon" disabled={isUpdatingQuantity} onClick={() => updateQuantity(product.productId, product.count, "+")} >
+                    <button className="btn-start p-0 "  disabled={isUpdatingQuantity} onClick={() => updateQuantity(product.productId, product.count, "+")} >
                       <Plus size={18} />
-                    </Button>
+                    </button>
                     <p className='border-x px-1 border-primary-bg'>{product.count}</p>
-                    <Button variant="outline" size="icon" disabled={isUpdatingQuantity} onClick={() => updateQuantity(product.productId, product.count, "-")}>
+                    <button className="btn-start p-0 "   disabled={isUpdatingQuantity} onClick={() => updateQuantity(product.productId, product.count, "-")}>
                       <Minus size={18} />
-                    </Button>
+                    </button>
                   </div>
                   <div>
                     <button onClick={() => handleRemove(product.productId, product.productName)}> <Trash2 className=" text-red-500 " />
@@ -90,11 +99,33 @@ export default function Cart() {
               ))}
             </div>}
            {data?.items?.length > 0 && (<div className="flex justify-center"> 
-             <button className="button-Secondary bg-red-900 mt-4 hover:bg-red-400 w-4/10 " onClick={() => clearCart()} disabled={clearCartIspading} >
+           
+             <AlertDialog>
+      <AlertDialogTrigger
+        render={  <button className="button-Secondary bg-red-900 mt-4 hover:bg-red-400 w-4/10 ">
             {t('Delet all products')}
-          </button></div>)} 
+          </button>}
+      />
+      <AlertDialogContent size="sm">
+        <AlertDialogHeader>
+          <AlertDialogMedia className="bg-destructive/10 text-destructive dark:bg-destructive/20 dark:text-destructive">
+            <Trash2Icon />
+          </AlertDialogMedia>
+          <AlertDialogTitle>{t('Delete Cart')} ?</AlertDialogTitle>
+          <AlertDialogDescription>
+            {t('Are you sure you want to remove all products from the shopping cart?')}
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <AlertDialogCancel variant="outline">{t('Cancel')}</AlertDialogCancel>
+          <AlertDialogAction  onClick={() => clearCart()} disabled={clearCartIspading}  variant="destructive">{t('Delete')}</AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+           </div>)} 
 
         </div>
+        {data.items.length >=1  && (
         <div className=" max-w-100 mx-auto pt-6 md:w-3/10 bg-sidebar-border rounded-xl shadow-xl/30 overflow-hidden">
           <form action="" className="border-y border-primary-bg py-4 text-primary-bg ">
             <label className="text-[14px] font-bold ps-2">{t('Discount code:')}</label>
@@ -123,7 +154,10 @@ export default function Cart() {
           </div>
 
          
+       
         </div>
+      ) }
+     
       </section>
 
       

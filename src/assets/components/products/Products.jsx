@@ -12,6 +12,7 @@ import Stars from '../Stars/Stars';
 import { toast } from 'sonner';
 import useFavorites from '@/store/useFavorites';
 import NotLogged from '../notLogged/NotLogged';
+import LodingCard from '../isLoading/LodingCard';
 
 export default function Products({ number, search = '', minPrice = '', maxPrice = '', sortBy = '', ascending = true }) {
 
@@ -28,7 +29,7 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
   const addFavorite = useFavorites((state) => state.addFavorite);
   const removeFavorite = useFavorites((state) => state.removeFavorite);
 
-  if (isLoading) return <p>loding....</p>
+  if (isLoading) return  <LodingCard/>
   if (isError) return <Error />
 
   let list = data.response.data.filter((item) => {
