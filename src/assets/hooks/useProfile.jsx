@@ -11,7 +11,7 @@ export default function useProfile() {
   }
 
   return useQuery({
-    queryKey:["info" , i18n.language],
+    queryKey:["profile" , i18n.language],
     queryFn: getProfileInfo,
     staleTime: 1000 * 60 * 5 
   });
