@@ -86,7 +86,7 @@ const favorites = useFavorites((state)=> state.favorites)
           <SheetContent side={i18n.dir() === "rtl" ? "right" : "left"} className='bg-primary-bg text-white'>
             <SheetHeader className='px-0'>
               <SheetTitle className='mt-6'> </SheetTitle>
-             {Token &&(<SheetClose><Link className='SheetClose' t='/'o><User color='#fff' />
+             {Token &&(<SheetClose><Link className='SheetClose' t='/Profile'o><User color='#fff' />
               {t('My profile')}   </Link></SheetClose> )} 
               <SheetClose><Link className='SheetClose' to='/'><House color='#fff' />
                 {t('Home')}</Link></SheetClose>
@@ -156,7 +156,7 @@ const favorites = useFavorites((state)=> state.favorites)
                     </DropdownMenuItem>
                     
                     <DropdownMenuItem>
-                      <Link className='flex gap-4 py-2 w-full'  to='/orders'>
+                      <Link className='flex gap-4 py-2 w-full'  to='/Profile?tab=order'>
                       <Logs />
                       {t('My Orders')}
                       </Link>

@@ -25,15 +25,17 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 import slide1 from "../../../img/sign/SIDE-COLOR.webp"
 import slide2 from "../../../img/sign/shop-new.webp"
+import { useTranslation } from 'react-i18next'
 
 export default function Login() {
+  const {t} = useTranslation();
 
   const [serverErrors,setserverErrors] = useState({});
  
 
 
   const {register,handleSubmit,formState:{errors}} = useForm({
-    resolver:yupResolver(Loginschema)
+    resolver:yupResolver(Loginschema(t))
 
   });
 
@@ -73,12 +75,12 @@ export default function Login() {
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
-                <a
+                <Link
                   href="#"
                   className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
                 >
                   Forgot your password?
-                </a>
+                </Link>
               </div>
               <Input id="password" type="password" {...register("password")} placeholder="••••••" 
            className={errors.password ?"border-red-700 border-2":""} />
