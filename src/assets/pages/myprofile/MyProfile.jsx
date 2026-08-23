@@ -25,6 +25,7 @@ import { ChangePasswordSchema } from '@/assets/components/vallidation/ChangePass
 import i18n from '@/i18next'
 import { useTheme } from '@/assets/components/theme-provider/ThemeProvider'
 import { Switch } from "@/components/ui/switch"
+import LoadingMyProfile from '@/assets/components/isLoading/LoadingMyProfile'
 
 export default function MyProfile() {
 
@@ -105,7 +106,7 @@ export default function MyProfile() {
 
 
 
-  if (isLoading) return <p>lodiiing</p>
+  if (isLoading) return <LoadingMyProfile/>
   if (isError) return <Error />
 
   return (
