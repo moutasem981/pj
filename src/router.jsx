@@ -10,6 +10,7 @@ import Checkout from "./assets/pages/checkout/Checkout";
 import AllProducts from "./assets/pages/allproducts/AllProducts";
 import Favorites from "./assets/pages/favorites/Favorites";
 import MyProfile from "./assets/pages/myprofile/MyProfile";
+import { Faq } from "./assets/pages/faq/Faq";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path:'Products',
         element:<AllProducts/>
+      },
+      {
+        path:'faq',
+        element:<Faq/>
       },
       {
         path:'products/:id',
