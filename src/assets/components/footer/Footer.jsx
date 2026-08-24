@@ -33,7 +33,7 @@ export default function Footer() {
           <div className='flex items-center flex-wrap sm:flex-nowrap  justify-between py-5 md:py-8 gap-3'>
         <div className='gap-2'>
           <span className='text-side text-[16px] md:text-[20px]'>{t('Join our our story')}</span>
-          <p className='text-side'>{t('We’ll send you Link nice letter once per week. No spam.')}</p>
+          <p className='text-side'>{t('Well send you Link nice letter once per week. No spam.')}</p>
         </div>
         <div>
           <form className='  flex gap-x-4 gap-y-2 items-center justify-between sm:flex-nowrap flex-wrap'>      
