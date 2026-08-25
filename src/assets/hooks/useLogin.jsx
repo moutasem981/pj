@@ -18,7 +18,11 @@ export default function useLogin() {
     onSuccess:(data)=>{
     setToken(data.accessToken);
     navigate('/');
-    }
+    },
+     onError: (error) => {
+    const message = error?.response?.data?.message || t('Email or password is incorrect');
+    setserverErrors([message]);
+  }
   })
 }
 
