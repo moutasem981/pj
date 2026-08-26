@@ -25,6 +25,10 @@ import {
 import { Button } from "@/components/ui/button"
 
 export default function Cart() {
+    const { t } = useTranslation();
+      const navigate = useNavigate();
+
+  const { data, isLoading, isError } = useCart()
   const { mutate: RemoveItem, isPending } = useRemoveFormCart();
   const { mutate: clearCart, isPending: clearCartIspading } = useClearCart();
   const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
@@ -32,11 +36,7 @@ export default function Cart() {
 
 
 
-  const { t } = useTranslation();
-  const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useCart()
-  console.log(data)
   function handleRemove(productId, productName) {
     RemoveItem(productId);
     toast.error(productName, {

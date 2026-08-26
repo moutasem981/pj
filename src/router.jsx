@@ -11,6 +11,7 @@ import AllProducts from "./assets/pages/allproducts/AllProducts";
 import Favorites from "./assets/pages/favorites/Favorites";
 import MyProfile from "./assets/pages/myprofile/MyProfile";
 import { Faq } from "./assets/pages/faq/Faq";
+import About from "./assets/pages/about/About";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,11 @@ const router = createBrowserRouter([
       {
         path:'products/:id',
         element:<Productsdetails/>
+      },
+      
+      {
+        path:'about',
+        element:<About/>
       },
       {
         path:'Checkout',
