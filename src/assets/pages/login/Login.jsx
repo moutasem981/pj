@@ -24,6 +24,7 @@ import { Mail, LockKeyhole, MoveRight } from 'lucide-react'
 import slide1 from "../../../img/sign/SIDE-COLOR.webp"
 import slide2 from "../../../img/sign/shop-new.webp"
 import slide3 from "../../../img/sign/Latest-Products.webp"
+import googleImg from "../../../img/sign/google.png"
 
 
 export default function Login() {
@@ -62,7 +63,7 @@ export default function Login() {
 
     <section className=' flex items-center justify-center py-20 px-4'>
 
-      <div className='w-full max-w-230 bg-background rounded-3xl overflow-hidden shadow-[0_35px_35px_rgba(0,0,0,0.25)] flex'>
+      <div className='w-full max-w-230 bg-background rounded-3xl overflow-hidden shadow-[0_0_40px_rgba(0,0,0,0.15)] flex'>
 
 
 
@@ -238,7 +239,7 @@ export default function Login() {
 
           <Button type='button' variant='outline' className='w-full h-12 border-primary-bg/20 text-main'>
 
-            <span className='font-bold text-[17px] me-2'>  G  </span>
+            <img src={googleImg} alt="logo google"  className='w-5'/>
             <span> {t('Sign in with Google')}</span>
 
           </Button>
