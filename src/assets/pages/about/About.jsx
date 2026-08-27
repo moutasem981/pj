@@ -2,6 +2,9 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import heroImg from '@/img/about/hero.png'
 import missionImg from '@/img/about/mission.webp'
+import ourTeamImg from '@/img/about/our-team.png'
+import ourTeam2Img from '@/img/about/our-team2.png'
+import ourTeam3Img from '@/img/about/our-team3.png'
 
 export default function About() {
   const { t } = useTranslation();
@@ -23,7 +26,7 @@ export default function About() {
           </div>
 
           <div className='relative max-md:mx-auto w-screen   md:w-7/10 bg-white'>
-            <img src={heroImg} alt={t('About Us')} className='w-screen h-full object-cover' />
+            <img src={heroImg} alt={t('About Us')} className='w-screen h-full min-h-50 object-cover' />
           </div>
         </div>
 
@@ -65,6 +68,39 @@ export default function About() {
 
         </div>
         
+      </section>
+
+      {/* Our Team section */}
+      <section className=' py-10 lg:py-30 text-center'>
+
+        <h2 className='text-primary-bg mb-10'>{t('Our Team')}</h2>
+
+
+        <div className='flex gap-25 max-xl:flex-wrap justify-center items-center'>
+
+          <div className='relative'>
+            <img src={ourTeamImg} alt="our team images" />
+            <div className='w-[288px]   pt-10 border-t-10 border-primary-bg absolute bg-background left-7.25 -bottom-1/9'>
+              <h3 className='text-main text-primary-bg font-bold'>{t('Chili Mili')}</h3>
+              <span className='text-main text-primary-bg '>{t('CEO & Founder')}</span>
+            </div>
+          </div>
+          <div className='relative'>
+            <img src={ourTeam2Img} alt="our team images" />
+            <div className='w-[288px]   pt-10 border-t-10 border-primary-bg absolute bg-background left-7.25 -bottom-1/9'>
+              <h3 className='text-main text-primary-bg font-bold'>{t('Emma Watson')}</h3>
+              <span className='text-main text-primary-bg '>{t('CMO')}</span>
+            </div>
+          </div>
+          <div className='relative'>
+            <img src={ourTeam3Img} alt="our team images" />
+            <div className='w-[288px]   pt-10 border-t-10 border-primary-bg absolute bg-background left-7.25 -bottom-1/9'>
+              <h3 className='text-main text-primary-bg font-bold'>{t('James William')}</h3>
+              <span className='text-main text-primary-bg '>{t('COO')}</span>
+            </div>
+          </div>
+
+        </div>
       </section>
     </main>
   )
