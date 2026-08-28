@@ -95,7 +95,7 @@ const favorites = useFavorites((state)=> state.favorites)
               <SheetClose><Link className='SheetClose' to='/About'><Info color='#fff' />
                 {t('About')}</Link></SheetClose>
               
-              <SheetClose><Link className='SheetClose' to='/Contact us'><MessageCircleQuestionMark color='#fff' />
+              <SheetClose><Link className='SheetClose' to='/Contact'><MessageCircleQuestionMark color='#fff' />
                  {t('Contact us')}</Link></SheetClose>
                 <SheetClose> <Link className='SheetClose'  to='/faq'><CircleQuestionMark color='#fff' />{t('FAQ')}</Link> </SheetClose>
               <SheetClose><Link className='SheetClose' onClick={changeLanguage}><Languages color='#fff' />
@@ -129,7 +129,7 @@ const favorites = useFavorites((state)=> state.favorites)
             <Link className='lists-nav' to='/'> {t('Home')}</Link>
             <Link className='lists-nav' to='/About'> {t('About')}</Link>
             <Link className='lists-nav' to='/Products'> {t('Products')}</Link>
-            <Link className='lists-nav' to='/Contact us'> {t('Contact us')}</Link>
+            <Link className='lists-nav' to='/Contact'> {t('Contact us')}</Link>
           </div>
 
           <div>

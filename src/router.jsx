@@ -12,6 +12,7 @@ import Favorites from "./assets/pages/favorites/Favorites";
 import MyProfile from "./assets/pages/myprofile/MyProfile";
 import { Faq } from "./assets/pages/faq/Faq";
 import About from "./assets/pages/about/About";
+import ContactUs from "./assets/pages/ContactUs/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:'about',
         element:<About/>
+      },
+      {
+        path:'Contact',
+        element:<ContactUs/>
       },
       {
         path:'Checkout',

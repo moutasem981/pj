@@ -90,7 +90,7 @@ export default function About() {
       </section>
 
       {/* Our Team section */}
-      <section className=' py-10 lg:py-30 text-center'>
+      <section className=' py-15 lg:py-30 text-center'>
 
         <h2 className='text-primary-bg mb-10'>{t('Our Team')}</h2>
 
@@ -138,10 +138,10 @@ export default function About() {
       </section>
 
       {/* Happy customers section */}
-      <section className='container'>
+      <section className='container pb-17'>
         <div className=' max-w-7/10 lg:max-w-4/10 text-center mx-auto'>
           <h2 className='text-primary-bg'>{t('Trusted by Thousands of Happy Customers')}</h2>
-          <p className='text-main mt-4.5 mb-18'>{t('Discover what our customers say about their shopping experience and why they keep coming back.')}</p>
+          <p className='text-main mt-4.5 mb-7 md:mb-18'>{t('Discover what our customers say about their shopping experience and why they keep coming back.')}</p>
         </div>
         <div dir="auto">
           <Carousel
@@ -169,13 +169,13 @@ export default function About() {
                       </div>
                     </div>
 
-                    <p className="mt-3 text-main text-sm">{review.comment}</p>
+                    <p className="mt-3 text-main min-h-20 text-sm ">{review.comment}</p>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
 
-            <div className="flex items-center justify-end gap-3 mt-6">
+            <div className="flex items-center justify-end gap-3 my-6">
               <CarouselPrevious className="static translate-y-0 rtl:rotate-180 rounded-full w-11 h-11 border-2" />
               <CarouselNext className="static translate-y-0 rtl:rotate-180 rounded-full w-11 h-11 bg-primary-bg text-white hover:bg-primary-bg/90 border-none" />
             </div>

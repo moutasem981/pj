@@ -76,10 +76,10 @@ export default function Footer() {
                         <div class="flex flex-col gap-3 md:gap-4">
                             <Link to='/' class="active:underline duration-400 hover:scale-125">{t('Home')}</Link>
                             <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('About')}</Link>
-                            <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Products')}</Link>
+                            <Link to='/Products' class="active:underline duration-400 hover:scale-125">{t('Products')}</Link>
                         </div>
                         <div class="flex flex-col gap-3 md:gap-4">
-                            <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Contact us')}</Link>
+                            <Link to='/Contact' class="active:underline duration-400 hover:scale-125">{t('Contact us')}</Link>
                           <Link to='/About' class="active:underline duration-400 hover:scale-125">{t('Our Team')}</Link>
                            <Link to='/Products' class="active:underline duration-400 hover:scale-125">{t('Shop Now')}</Link>
                         </div>
