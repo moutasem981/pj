@@ -14,7 +14,6 @@ export default function useRegister() {
     },
     onSuccess: (data) => {
       setToken(data.accessToken);
-      navigate('/Login');
     }
   })
 }

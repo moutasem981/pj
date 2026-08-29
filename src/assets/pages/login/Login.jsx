@@ -34,7 +34,6 @@ export default function Login() {
 
   const [serverErrors, setserverErrors] = useState([]);
 
-
   const {
     register,
     handleSubmit,
@@ -45,9 +44,7 @@ export default function Login() {
 
   });
 
-
   const { mutate: Login } = useLogin();
-
 
   const plugin = React.useRef(
 
@@ -145,7 +142,6 @@ export default function Login() {
 
         </div>
 
-
         <div className='w-full md:w-[52%] md:p-14 sm:p-10 p-6 flex flex-col justify-center'>
 
           <div className='mb-9'>
@@ -220,7 +216,7 @@ export default function Login() {
 
               </div>
 
-              <Button type='submit' className='button-Secondary w-full h-12 mt-2' > {t('Sign In')} </Button>
+              <button type='submit' className='button-Secondary w-full h-12 mt-2' > {t('Sign In')} </button>
 
             </div>
 
@@ -235,7 +231,6 @@ export default function Login() {
             <div className='h-[1px] bg-primary-bg/15 flex-1'></div>
 
           </div>
-
 
           <Button type='button' variant='outline' className='w-full h-12 border-primary-bg/20 text-main'>
 

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import * as React from "react"
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Autoplay from "embla-carousel-autoplay"
 import { Registerschema } from '../../components/vallidation/Registerschema'
@@ -10,27 +10,27 @@ import useRegister from '@/assets/hooks/useRegisters'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"
-import { User, Mail, LockKeyhole, MapPin, Phone } from 'lucide-react'
+import { Carousel, CarouselContent, CarouselItem, } from "@/components/ui/carousel"
+import { User, Mail, LockKeyhole, MapPin, Phone, MailCheck } from 'lucide-react'
 import slide1 from "../../../img/sign/SIDE-COLOR.webp"
 import slide2 from "../../../img/sign/shop-new.webp"
 import slide3 from "../../../img/sign/Latest-Products.webp"
 import googleImg from "../../../img/sign/google.png"
-
+import { AlertDialog, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog"
 
 export default function Register() {
 
   const { t, i18n } = useTranslation();
   const dir = i18n.dir();
 
+  const navigate = useNavigate();
+
+  const [successOpen, setSuccessOpen] = useState(false);
+
   const [serverErrors, setserverErrors] = useState([]);
 
 
-  const {register,handleSubmit,formState: { errors }} = useForm({
+  const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(Registerschema(t))
   });
 
@@ -47,12 +47,17 @@ export default function Register() {
 
 
   const onSubmit = (data) => {
+
     setserverErrors([]);
     RegisterUser(data, {
+      onSuccess: () => {
+        setSuccessOpen(true);
+      },
       onError: (error) => {
         setserverErrors([t("Something went wrong, please try again")]);
       }
     });
+
   };
 
 
@@ -269,7 +274,7 @@ export default function Register() {
 
               </div>
 
-              <Button type='submit' className='button-Secondary w-full h-12 mt-2' > {t('Sign Up')} </Button>
+              <button type='submit' className='button-Secondary w-full h-12 mt-2' > {t('Sign Up')} </button>
 
             </div>
 
@@ -288,7 +293,7 @@ export default function Register() {
 
           <Button type='button' variant='outline' className='w-full h-12 border-primary-bg/20 text-main'>
 
-            <img src={googleImg} alt="logo google"  className='w-5'/>
+            <img src={googleImg} alt="logo google" className='w-5' />
             <span> {t('Sign in with Google')}</span>
 
           </Button>
@@ -304,6 +309,38 @@ export default function Register() {
         </div>
 
       </div>
+
+      <AlertDialog open={successOpen}>
+
+        <AlertDialogContent className='max-w-100 rounded-2xl border-primary-bg/15'>
+
+          <AlertDialogHeader className='items-center  text-center'>
+
+            <div className='w-14 h-14 rounded-full bg-primary-bg/10 flex items-center justify-center mx-auto  mb-2'>
+              <MailCheck size={27} className='text-primary-bg' />
+            </div>
+
+            <AlertDialogTitle className='text-primary-bg mx-auto text-[20px]'>
+              {t('Check Your Email')}
+            </AlertDialogTitle>
+
+            <AlertDialogDescription className='text-main text-[12px] text-center '>
+              {t('Your account has been created successfully. We sent an activation link to your email. Please check your inbox and activate your account before signing in.')}
+            </AlertDialogDescription>
+
+          </AlertDialogHeader>
+
+          <AlertDialogFooter className='sm:justify-center'>
+
+            <button onClick={() => navigate('/Login')} className='button-Secondary text-center flex justify-center items-center w-full h-10'>
+              {t('Go to Login')}
+            </button>
+
+          </AlertDialogFooter>
+
+        </AlertDialogContent>
+
+      </AlertDialog>
 
     </section>
 

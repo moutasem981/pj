@@ -13,6 +13,8 @@ import MyProfile from "./assets/pages/myprofile/MyProfile";
 import { Faq } from "./assets/pages/faq/Faq";
 import About from "./assets/pages/about/About";
 import ContactUs from "./assets/pages/ContactUs/ContactUs";
+import ForgotPassword from "./assets/pages/auth/ForgotPassword";
+import ResetPassword from "./assets/pages/auth/ResetPassword";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +70,14 @@ const router = createBrowserRouter([
       {
         path:'Contact',
         element:<ContactUs/>
+      },
+      {
+        path:'ForgotPassword',
+        element:<ForgotPassword/>
+      },
+      {
+        path:'ResetPassword',
+        element:<ResetPassword/>
       },
       {
         path:'Checkout',
