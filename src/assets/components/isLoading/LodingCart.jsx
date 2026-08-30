@@ -1,6 +1,7 @@
 import useCart from '@/assets/hooks/useCart';
 import React from 'react'
-
+import { Card, CardContent } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 export default function LodingCart() {
 
   const { data } = useCart();
