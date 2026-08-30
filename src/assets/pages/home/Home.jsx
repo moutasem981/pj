@@ -345,9 +345,6 @@ export default function Home() {
 
         </div>
 
-
-
-
         <div className='grid lg:grid-cols-3 border-y border-primary-bg/20'>
 
           <div onClick={() => navigate('/Products')} className='group relative min-h-105 md:min-h-110 py-10 px-7 md:px-9 overflow-hidden cursor-pointer border-b lg:border-b-0 lg:border-e border-primary-bg/20'>
@@ -403,7 +400,7 @@ export default function Home() {
               <div className='mt-auto flex items-center justify-between pt-10'>
                 <span className='text-white text-[13px] font-semibold'> {t('Explore the range')}</span>
 
-                <div className='w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-main group-hover:-rotate-35 transition-all duration-300'>
+                <div className='w-10 h-10 rounded-full border border-white/30 flex items-center justify-center group-hover:bg-white group-hover:text-primary-bg group-hover:-rotate-35 transition-all duration-300'>
                   <MoveRight size={17} />
                 </div>
 
@@ -412,7 +409,6 @@ export default function Home() {
             </div>
 
           </div>
-
 
           <div onClick={() => navigate('/Products')} className='group relative min-h-105 md:min-h-110 py-10 px-7 md:px-9 overflow-hidden cursor-pointer'>
 
@@ -451,9 +447,9 @@ export default function Home() {
 
           <p className='text-main text-[12px]'>{t('Prices and availability may vary by product.')} </p>
 
-          <button onClick={() => navigate('/Products')} className='flex items-center gap-2 text-primary-bg text-[13px] font-semibold ' >
+          <button onClick={() => navigate('/Products')} className=' group flex items-center gap-2 text-primary-bg text-[13px] font-semibold ' >
             {t('Browse all products')}
-            <MoveRight size={16} className='group-hover:translate-x-1 transition-all' />
+            <MoveRight size={16} className=' group-hover:translate-x-1 transition-all' />
           </button>
 
         </div>
@@ -503,7 +499,7 @@ export default function Home() {
 
             <div className='bg-background md:px-8 px-5 border border-primary-bg/15 '>
 
-              <Accordion type='single' collapsible defaultValue='shipping' className='w-full '  >
+              <Accordion type='single' defaultValue='shipping' className='w-full '  >
 
                 <AccordionItem value='shipping'>
 

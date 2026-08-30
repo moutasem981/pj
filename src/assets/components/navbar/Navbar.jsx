@@ -81,8 +81,8 @@ const favorites = useFavorites((state)=> state.favorites)
         <div className='container flex justify-between   mx-auto z-40 items-center  '>
           <div className='inline md:hidden'>
              <Sheet>
-          <SheetTrigger render={<Link>
-            <TextAlignJustify color='#566F6B' /> </Link>} />
+          <SheetTrigger render={<button>
+            <TextAlignJustify color='#566F6B' /> </button>} />
           <SheetContent side={i18n.dir() === "rtl" ? "right" : "left"} className='bg-primary-bg text-white'>
             <SheetHeader className='px-0'>
               <SheetTitle className='mt-6'> </SheetTitle>

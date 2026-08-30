@@ -33,7 +33,7 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
   if (isError) return <Error />
 
   let list = data.response.data.filter((item) => {
-    const matchName = item.name.toLowerCase().includes(search.toLowerCase().trim());
+    const matchName = (item.name ?? '').toLowerCase().includes(search.toLowerCase().trim());
     const matchMin = minPrice === '' || item.price >= Number(minPrice);
     const matchMax = maxPrice === '' || item.price <= Number(maxPrice);
     return matchName && matchMin && matchMax;
@@ -59,12 +59,14 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
           (item) => item.id === product.id
         );
         return <CarouselItem key={product.id} className='bg-white pl-0 rounded-lg border border-primary-bg relative overflow-hidden min-w-60 z-10 pt-5 mx-7 hover:scale-110 transition-all duration-300'>
-          <Link to={`/products/${product.id}`} className='flex justify-center items-center'>
-            <img className='w-40 mb-3' src={product.image} />
+          <div  className='flex justify-center items-center'>
+            <Link to={`/products/${product.id}`}>
+              <img className='w-40 mb-3' src={product.image} />
+            </Link>
            {Token ? <Link className='absolute z-10 right-5 top-5' onClick={(e) => {favorite ? removeFavorite(product.id) : addFavorite(product) } } ><Heart className={favorite? "fill-red-500 text-red-500" : "text-primary-bg" }/> </Link>
             :
             <Link className='absolute z-10 right-5 top-5'><Heart/></Link> } 
-          </Link>
+          </div>
           <div className='flex flex-col items-center bg-[#EBF3F5] pb-4 w-full'>
             <h3 className='text-main text-[20px] mt-2'>{product.name}</h3>
             <span className='text-[#353535] text-[14px]'>{product.price}$</span>

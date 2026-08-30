@@ -23,6 +23,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Button } from "@/components/ui/button"
+import LodingCart from "@/assets/components/isLoading/LodingCart";
 
 export default function Cart() {
     const { t } = useTranslation();
@@ -48,7 +49,7 @@ export default function Cart() {
 
 
   if (isLoading) {
-    return <p>loding .....</p>
+    return <LodingCart/>
   }
   if (isError) {
     return <Error />

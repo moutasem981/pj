@@ -23,7 +23,9 @@ export default function ResetPassword() {
   const { mutate: resetPassword, isPending } = useResetPassword();
 
 
-  const {register, handleSubmit, setError, formState: { errors } } = useForm({ resolver: yupResolver(ResetPasswordSchema(t)) });
+  const {register, handleSubmit, setError, formState: { errors } } = useForm(
+     { resolver: yupResolver(ResetPasswordSchema(t))    
+    });
 
 
   const onSubmit = (data) => {

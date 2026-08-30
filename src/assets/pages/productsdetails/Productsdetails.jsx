@@ -126,8 +126,8 @@ export default function Productsdetails() {
               </div>
               <div className='grid gap-y-10  md:grid-cols-2'>
 
-                {reviews.map((review) =>
-                  <Link key={review.id} className='border border-primary-addres rounded-lg  overflow-auto shadow-lg py-3.5 px-3 w-8/10 mx-auto flex flex-col justify-between gap-2  hover:scale-110 transition-all duration-300'>
+                {reviews.map((review ,index) =>
+                  <Link key={index} className='border border-primary-addres rounded-lg  overflow-auto shadow-lg py-3.5 px-3 w-8/10 mx-auto flex flex-col justify-between gap-2  hover:scale-110 transition-all duration-300'>
                     <div className='flex justify-between items-center'>
                       <h4 className='text-primary-bg font-bold'>{review.userName}</h4>
                       <span><Stars rate={review.rating} /></span>
