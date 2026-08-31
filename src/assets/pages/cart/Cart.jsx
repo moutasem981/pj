@@ -35,9 +35,6 @@ export default function Cart() {
   const { updateQuantity, isPending: isUpdatingQuantity } = useCartQuantity();
 
 
-
-
-
   function handleRemove(productId, productName) {
     RemoveItem(productId);
     toast.error(productName, {
@@ -45,7 +42,6 @@ export default function Cart() {
 
     })
   }
-
 
 
   if (isLoading) {

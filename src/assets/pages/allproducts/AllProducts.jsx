@@ -27,25 +27,17 @@ export default function AllProducts() {
                         <h3 className='text-main text-lg font-bold'>{t('Filters')}</h3>
 
                         <div className='flex gap-2 '>
-                            <input
-                                type="number"
-                                placeholder={t('Min Price')}
-                                value={minPrice}
+                            <input type="number"  placeholder={t('Min Price')}  value={minPrice}
                                 onChange={(e) => setMinPrice(e.target.value)}
                                 className='w-1/2 p-2 border border-primary-bg rounded text-sm outline-none'
                             />
-                            <input
-                                type="number"
-                                placeholder={t('Max Price')}
-                                value={maxPrice}
+                            <input  type="number" placeholder={t('Max Price')} value={maxPrice}
                                 onChange={(e) => setMaxPrice(e.target.value)}
                                 className='w-1/2 p-2 border border-primary-bg rounded text-sm outline-none'
                             />
                         </div>
 
-                        <select
-                            value={sortBy}
-                            onChange={(e) => setSortBy(e.target.value)}
+                        <select  value={sortBy}  onChange={(e) => setSortBy(e.target.value)}
                             className='p-2 border border-primary-bg text-primary-bg rounded text-sm outline-none '
                         >
                             <option value="">{t('Sort By')}</option>
@@ -54,9 +46,7 @@ export default function AllProducts() {
                             <option value="rate">{t('Rating')}</option>
                         </select>
 
-                        <select
-                            value={ascending}
-                            onChange={(e) => setAscending(e.target.value === 'true')}
+                        <select  value={ascending} onChange={(e) => setAscending(e.target.value === 'true')}
                             className='p-2 border border-primary-bg text-primary-bg rounded text-sm outline-none '
                         >
                             <option value="true">{t('Ascending')}</option>
@@ -65,18 +55,14 @@ export default function AllProducts() {
 
 
                     </div>
-                    <div>
-                        <input 
-                            type="text"
-                            placeholder={t('Search for a product')}
-                            value={search}
+                    <div className='flex flex-col items-center justify-center'>
+                        <input   type="text" placeholder={t('Search for a product')}  value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className='p-2 mb-12 border border-primary-bg rounded text-sm outline-none w-full'
+                            className='p-3 mb-12 border border-primary-bg  text-sm outline-none rounded-full  max-w-xl w-full'
                         />
                         <Carousel >
                             <div className='grid xl:grid-cols-3 sm:grid-cols-2 justify-items-center sm:justify-between gap-y-5'>
-                            <Products
-                                search={search}
+                            <Products  search={search}
                                 minPrice={minPrice}
                                 maxPrice={maxPrice}
                                 sortBy={sortBy}

@@ -2,8 +2,7 @@ import React from 'react'
 import UseProducts from '../../hooks/UseProducts'
 import { Link, useNavigate } from 'react-router-dom';
 import Error from '../error/Error';
-import {  Heart, ShoppingCart } from 'lucide-react';
-import useAddToCart from '@/assets/hooks/useAddToCart';
+import { Heart,  SearchX } from 'lucide-react';import useAddToCart from '@/assets/hooks/useAddToCart';
 import useAuthStore from '@/store/useAuthStore';
 
 import { useTranslation } from 'react-i18next';
@@ -39,6 +38,11 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
     return matchName && matchMin && matchMax;
   });
 
+
+  
+
+
+
   function handleAddCart(productId, productName,) {
     addToCart({ productId, count: 1 });
     toast.success(productName, {
@@ -51,6 +55,23 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
   }
 
   if (number) list = list.slice(0, number);
+
+  const nFilters = search.trim() !== '' || minPrice !== '' || maxPrice !== '';
+
+  if (list.length === 0 && nFilters) {
+  return (
+    <div className='  max-w-sm  flex items-center'>
+      
+      <div className='flex flex-col gap-3 justify-center items-center py-10 px-4 text-center'>
+        <SearchX size={170}
+          className='text-primary-bg bg-chart-1 rounded-full p-6' />
+        <h3 className='text-main font-black text-xl pt-2'>{t('No products found')}</h3>
+        <p className='text-main  '> {t('We could not find any products matching your search or selected filters. Try changing your search term or adjusting the filters.' )} </p>
+      </div>
+
+    </div>
+  )
+}
 
   return (
     <>

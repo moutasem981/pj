@@ -221,8 +221,8 @@ export default function MyProfile() {
 
                   </div>
                   <div>
-                    <div className='bg-[#566f6b3b] p-2 rounded-full'>
-                      <Logs className='text-primary-bg' />
+                    <div className='bg-[#566f6b3b] p-3 border border-primary-bg rounded-full'>
+                      <span className='text-main text-[14px]'>{data?.orders?.length}</span>
                     </div>
                   </div>
                 </div>
