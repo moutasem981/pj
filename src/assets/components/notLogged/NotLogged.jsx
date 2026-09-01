@@ -19,7 +19,7 @@ export default function NotLogged({text}) {
 
   return (
                 <Dialog>
-                  <DialogTrigger render={<button className={cn('button-main text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center w-7/10')}>{text}</button>} />
+                  <DialogTrigger render={<button className={cn('button-Secondary text-white bg-secondary hover:bg-secondary/50 flex gap-2 items-center justify-center max-w-87 w-7/10')}>{text}</button>} />
                   <DialogContent showCloseButton={false}>
                     <DialogHeader className='flex flex-col items-center justify-center gap-10'>
                       <DialogTitle className='flex flex-col items-center text-center justify-center gap-6'>
@@ -28,7 +28,7 @@ export default function NotLogged({text}) {
                         <span>{t('You must be logged in to add items or make purchases.')}</span>
                       </DialogTitle>
                       <DialogDescription className='w-full text-center'>
-                        <button onClick={() => navigate('/Login')} className='button-main w-7/10'>{t('Sign In')}</button>
+                        <button onClick={() => navigate('/Login')} className='button-Secondary w-7/10'>{t('Sign In')}</button>
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>

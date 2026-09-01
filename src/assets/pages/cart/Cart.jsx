@@ -99,7 +99,7 @@ export default function Cart() {
            
              <AlertDialog>
       <AlertDialogTrigger
-        render={  <button className="button-Secondary bg-red-900 mt-4 hover:bg-red-400 w-4/10 ">
+        render={  <button className="button-Secondary bg-red-900 mt-4 hover:bg-red-400 md:w-4/10 ">
             {t('Delet all products')}
           </button>}
       />
