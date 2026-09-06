@@ -1,5 +1,4 @@
 import Products from '@/assets/components/products/Products'
-import { Carousel } from '@/components/ui/carousel'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
@@ -8,10 +7,23 @@ import {
   PaginationItem,
   PaginationLink,
 } from "@/components/ui/pagination"
+import {  Link, useSearchParams } from "react-router-dom";
+import Categories from '@/assets/components/categories/Categories'
+import i18n from '@/i18next'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { MoveRight } from 'lucide-react';
 
 export default function AllProducts() {
     const { t } = useTranslation();
+      const dir = i18n.dir();
 
+    const [searchParams] = useSearchParams();
+    const categoryId = searchParams.get("category");
     const [search, setSearch] = useState('');
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
@@ -20,7 +32,35 @@ export default function AllProducts() {
 
     return (
         <main>
-            <section className='md:py-20 py-10 '>
+            <section className='container flex flex-col gap-10 items-center justify-center overflow-hidden '>
+                    <div className='w-full '>
+                            <Link onClick={() => navigate('/Products')} className=' group flex items-center gap-2 text-primary-bg text-[13px]  font-semibold pt-5 ' >
+                               {t('View all products')}
+                              <MoveRight size={16} className=' group-hover:translate-x-1 transition-all' />
+                            </Link>    
+                      <Carousel className='w-full '
+                        opts={{
+                          align: "start",
+                          direction: dir,
+                        }}
+                      >
+                        <CarouselContent className='xl:w-25/100 lg:w-35/100 sm:w-5/10  w-75/100  text-center my-4 mx-2 '>
+            
+                            
+                          <Categories />
+                          
+            
+            
+                        </CarouselContent>
+                        <CarouselPrevious />
+                        <CarouselNext />
+                      </Carousel>
+                    </div>
+                    
+                      
+            </section>
+
+            <section className=' pt-10 pb-20 '>
                 <div className='container flex max-md:flex-col gap-4 justify-between '>
 
                     <div className='md:w-3/10   border border-primary-bg p-4 rounded-lg  flex flex-col gap-3'>
@@ -67,6 +107,7 @@ export default function AllProducts() {
                                 maxPrice={maxPrice}
                                 sortBy={sortBy}
                                 ascending={ascending}
+                                categoryId={categoryId}
                                 
                             />
                             </div>

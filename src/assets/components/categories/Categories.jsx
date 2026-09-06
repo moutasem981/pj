@@ -19,9 +19,9 @@ export default function Categories() {
         <CarouselItem key={Category.id} className='max-w-[100px] py-2 pl-0 rounded-lg border border-primary-bg mx-7 hover:scale-110 transition-all duration-300 '>
           <Link to={`/Products?category=${Category.id}`} className='flex flex-col gap-3 items-center '>
             <div className='flex'>
-              <div className='bg-primary-bg/30 p-1 rounded-full'>
-                <div className='bg-primary-bg p-1 rounded-full'>
-                  <Image size={30} color='#fff' />
+              <div className='bg-primary-bg/30 p-2 rounded-full'>
+                <div className='bg-primary-bg w-8 h-8 flex items-center justify-center rounded-full'>
+                  <span className='capitalize text-white font-bold'>{Category.name[0]}</span>
                 </div>
               </div>
             </div>

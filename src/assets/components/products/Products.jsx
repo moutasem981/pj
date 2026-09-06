@@ -12,13 +12,19 @@ import { toast } from 'sonner';
 import useFavorites from '@/store/useFavorites';
 import NotLogged from '../notLogged/NotLogged';
 import LodingCard from '../isLoading/LodingCard';
+import useProductByCat from '../../hooks/useProductByCat';
 
-export default function Products({ number, search = '', minPrice = '', maxPrice = '', sortBy = '', ascending = true }) {
+export default function Products({ number, search = '', minPrice = '', maxPrice = '', sortBy = '', ascending = true ,   categoryId }) {
 
-  const { data, isLoading, isError } = UseProducts({
+  const allProducts = UseProducts({
     sortBy: sortBy || undefined,
     ascending: sortBy ? ascending : undefined,
   });
+  const categoryProducts = useProductByCat(categoryId);
+
+  const productsQuery = categoryId ? categoryProducts : allProducts;
+  const { data, isLoading, isError } = productsQuery;
+
 
   const { mutate: addToCart } = useAddToCart();
   const Token = useAuthStore((state) => state.token);
@@ -28,10 +34,10 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
   const addFavorite = useFavorites((state) => state.addFavorite);
   const removeFavorite = useFavorites((state) => state.removeFavorite);
 
-  if (isLoading) return  <LodingCard/>
+  if (isLoading) return  <LodingCard />
   if (isError) return <Error />
-
-  let list = data.response.data.filter((item) => {
+const products = categoryId ? data.response : data.response.data;
+  let list = products.filter((item) => {
     const matchName = (item.name ?? '').toLowerCase().includes(search.toLowerCase().trim());
     const matchMin = minPrice === '' || item.price >= Number(minPrice);
     const matchMax = maxPrice === '' || item.price <= Number(maxPrice);
@@ -58,7 +64,7 @@ export default function Products({ number, search = '', minPrice = '', maxPrice 
 
   const nFilters = search.trim() !== '' || minPrice !== '' || maxPrice !== '';
 
-  if (list.length === 0 && nFilters) {
+  if (list.length === 0 && (nFilters || categoryId)) {
   return (
     <div className='  max-w-sm  flex items-center'>
       

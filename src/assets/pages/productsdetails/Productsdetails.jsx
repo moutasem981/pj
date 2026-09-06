@@ -94,8 +94,7 @@ export default function Productsdetails() {
             error.response?.data?.message || error.response?.data?.title;
 
           toast.error(
-            serverMessage ||
-            t('You can only review a product after purchasing it and having the order approved.')
+            serverMessage || t('You can only review a product after purchasing it.')
           );
 
         }

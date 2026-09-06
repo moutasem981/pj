@@ -12,7 +12,8 @@ export default function useProductByCat(categoryId) {
   const query = useQuery({
     queryKey: ['productsCategory', categoryId, i18n.language],
     queryFn: getProductsByCat,
-    staleTime: 1000 * 60 * 5
+    staleTime: 1000 * 60 * 5,
+      enabled: !!categoryId,
   })
 
   return query;
