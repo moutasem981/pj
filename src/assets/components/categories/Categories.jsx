@@ -21,7 +21,7 @@ export default function Categories() {
             <div className='flex'>
               <div className='bg-primary-bg/30 p-2 rounded-full'>
                 <div className='bg-primary-bg w-8 h-8 flex items-center justify-center rounded-full'>
-                  <span className='capitalize text-white font-bold'>{Category.name?[0] || "?"}</span>
+                  <span className='capitalize text-white font-bold'>{Category.name?.[0] || "?"}</span>
                 </div>
               </div>
             </div>
